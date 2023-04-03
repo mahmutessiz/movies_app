@@ -7,6 +7,10 @@
     }"
     :loop="true"
     :navigation="true"
+    :autoplay="{
+      delay: 5000,
+      disableOnInteraction: false
+    }"
     :modules="modules"
     class="mySwiper"
   >
@@ -30,11 +34,11 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
 import 'swiper/css'
 
-import { Pagination, Navigation } from 'swiper'
+import { Pagination, Navigation, Autoplay } from 'swiper'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-const modules = [Pagination, Navigation]
+const modules = [Pagination, Navigation, Autoplay]
 </script>
 
 <style>
