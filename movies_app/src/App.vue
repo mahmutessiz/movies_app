@@ -1,11 +1,3 @@
-<!-- <script setup>
-
-import { RouterView } from 'vue-router'
-</script>
-
-<template>
-  <RouterView />
-</template> -->
 <template>
   <swiper
     watch-slides-visibility
@@ -28,9 +20,12 @@ import { RouterView } from 'vue-router'
       <p class="w-full">Thumbnail {{ n }}</p>
     </swiper-slide>
   </swiper>
+
+  <RouterView />
 </template>
 
 <script setup>
+import { RouterView } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
 import 'swiper/css'
@@ -41,3 +36,16 @@ import 'swiper/css/navigation'
 
 const modules = [Pagination, Navigation]
 </script>
+
+<style>
+/* override swiperjs buttons */
+.swiper-button-next {
+  top: 90%;
+  right: 10px;
+}
+
+.swiper-button-prev {
+  top: 90%;
+  left: 10px;
+}
+</style>
