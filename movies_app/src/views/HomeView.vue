@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
-  <main>HomeView component</main>
+  <div>HomeView</div>
 </template>
