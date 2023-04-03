@@ -7,7 +7,17 @@ import { RouterView } from 'vue-router'
   <RouterView />
 </template> -->
 <template>
-  <swiper watch-slides-visibility watch-slides-progress>
+  <swiper
+    watch-slides-visibility
+    watch-slides-progress
+    :pagination="{
+      type: 'progressbar'
+    }"
+    :loop="true"
+    :navigation="true"
+    :modules="modules"
+    class="mySwiper"
+  >
     <swiper-slide
       v-for="n of 50"
       :virtualIndex="n"
@@ -21,9 +31,13 @@ import { RouterView } from 'vue-router'
 </template>
 
 <script setup>
-import SwiperCore, { Thumbs } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
+import 'swiper/css'
 
-SwiperCore.use([Thumbs])
+import { Pagination, Navigation } from 'swiper'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+
+const modules = [Pagination, Navigation]
 </script>
