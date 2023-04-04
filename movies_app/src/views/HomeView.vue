@@ -1,3 +1,9 @@
+<script setup>
+import HeroSection from '@/components/HeroSection.vue'
+import TrendingWeek from '@/components/TrendingWeek.vue'
+</script>
+
 <template>
-  <div>HomeView</div>
+  <HeroSection />
+  <TrendingWeek />
 </template>
