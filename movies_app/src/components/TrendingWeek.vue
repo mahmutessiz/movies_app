@@ -18,6 +18,7 @@ const modules = [Pagination, Navigation, Autoplay]
     <swiper
       :slidesPerView="3"
       :spaceBetween="30"
+      :loop="true"
       :autoplay="{
         delay: 5000,
         disableOnInteraction: false

@@ -11,9 +11,6 @@ const modules = [Pagination, Navigation, Autoplay]
 </script>
 
 <template>
-  <div class="w-full px-4 py-4">
-    <h2 class="text-center text-2xl font-bold text-green-500">Editor's pick</h2>
-  </div>
   <swiper
     watch-slides-visibility
     watch-slides-progress
@@ -35,6 +32,9 @@ const modules = [Pagination, Navigation, Autoplay]
       :key="n"
       class="flex flex-wrap items-center justify-center text-center"
     >
+      <div class="w-full px-4 py-4">
+        <h2 class="text-left text-2xl font-bold text-green-500">Editor's pick #{{ n }}</h2>
+      </div>
       <img src="https://picsum.photos/200/300" alt="" />
       <p class="w-full">Mylist will be here {{ n }}</p>
     </swiper-slide>
