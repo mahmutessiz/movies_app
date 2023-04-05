@@ -6,7 +6,8 @@ export const useApiStore = defineStore('api', {
     movieListApiKey: import.meta.env.VITE_API_KEY,
     movieListApiUrl: import.meta.env.VITE_API_URL,
     sourceOfMovies: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/',
-    myMovieList: []
+    myMovieList: [],
+    sourceOfMoviesBackdropImg: 'https://www.themoviedb.org/t/p/w1280'
   }),
   actions: {
     async fetchMovieListData() {

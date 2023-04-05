@@ -41,32 +41,46 @@ const modules = [Pagination, Navigation, Autoplay]
       disableOnInteraction: false
     }"
     :modules="modules"
-    class="mySwiper"
+    class="mySwiper relative overflow-hidden"
   >
     <swiper-slide
       v-for="(data, index) in myMovieListData.myMovieList.items"
       :virtualIndex="data.id"
       :key="data.id"
-      class="bg-gradient-from-t relative flex flex-wrap items-center justify-center bg-gradient-to-b from-red-900 to-red-600/50 py-4 text-center"
+      class="bg-gradient-from-t relative flex h-[30rem] flex-wrap items-center justify-center bg-gradient-to-b from-gray-900 to-gray-600/50 py-4 text-center"
     >
-      <div>
+      <div class="absolute inset-0 -z-10 flex h-full w-full justify-center">
         <img
-          :src="myMovieListData.sourceOfMovies + data.poster_path"
-          class="w-40"
+          :src="myMovieListData.sourceOfMoviesBackdropImg + data.backdrop_path"
+          class="h-[30rem] w-full"
           :id="data.id"
           :alt="data.original_title"
         />
       </div>
-      <div class="w-1/2 px-4 py-4 text-left">
-        <h2 class="text-left text-2xl font-bold text-green-500">Editor's pick #{{ index + 1 }}</h2>
-        <br />
-        <p class="text-lg font-bold text-white">{{ data.original_title }}</p>
-        <p class="line-clamp-4">
-          Overview: <br />
-          {{ data.overview }}
-        </p>
-        <br />
-        <p>Rating: {{ data.vote_average }}</p>
+      <div
+        class="bg-gradient-from-t relative flex h-[30rem] w-full flex-wrap items-center justify-center bg-gradient-to-b from-gray-900 to-gray-600/50 py-4 text-center"
+      >
+        <div>
+          <img
+            :src="myMovieListData.sourceOfMovies + data.poster_path"
+            class="w-40"
+            :id="data.id"
+            :alt="data.original_title"
+          />
+        </div>
+        <div class="w-1/2 px-4 py-4 text-left">
+          <h2 class="text-left text-2xl font-bold text-green-500">
+            Editor's pick #{{ index + 1 }}
+          </h2>
+          <br />
+          <p class="text-lg font-bold text-white">{{ data.original_title }}</p>
+          <p class="line-clamp-4">
+            Overview: <br />
+            {{ data.overview }}
+          </p>
+          <br />
+          <p>Rating: {{ data.vote_average }}</p>
+        </div>
       </div>
     </swiper-slide>
     <div class="absolute bottom-[10%] right-4 z-20 flex flex-col gap-4">
