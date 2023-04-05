@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, computed } from 'vue'
+
 //Swiper.js setup
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
 import 'swiper/css'
-
 import { Pagination, Navigation, Autoplay } from 'swiper'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -21,6 +21,8 @@ onMounted(() => {
 })
 
 const modules = [Pagination, Navigation, Autoplay]
+
+//When i use vue router i can pull id of the movie via fetching image id
 </script>
 
 <template>
@@ -31,6 +33,7 @@ const modules = [Pagination, Navigation, Autoplay]
       type: 'progressbar'
     }"
     :loop="false"
+    :rewind="true"
     :initial-slide="0"
     :navigation="{ prevEl: '.prev', nextEl: '.next' }"
     :autoplay="{
@@ -49,8 +52,13 @@ const modules = [Pagination, Navigation, Autoplay]
       <div class="w-full px-4 py-4">
         <h2 class="text-left text-2xl font-bold text-green-500">Editor's pick #{{ index + 1 }}</h2>
       </div>
-      <img :src="myMovieListData.sourceOfMovies + data.backdrop_path" class="w-40" alt="" />
-      <p class="w-full">{{ data.original_title }}</p>
+      <img
+        :src="myMovieListData.sourceOfMovies + data.poster_path"
+        class="w-40"
+        :id="data.id"
+        :alt="data.original_title"
+      />
+      <p class="w-full text-lg text-black">{{ data.original_title }}</p>
     </swiper-slide>
     <div class="absolute bottom-[10%] right-4 z-20 flex flex-col gap-4">
       <button class="next bg-white p-1">next</button>
