@@ -47,18 +47,27 @@ const modules = [Pagination, Navigation, Autoplay]
       v-for="(data, index) in myMovieListData.myMovieList.items"
       :virtualIndex="data.id"
       :key="data.id"
-      class="bg-gradient-from-t relative flex flex-wrap items-center justify-center bg-gradient-to-b from-red-900 to-red-600 py-4 text-center"
+      class="bg-gradient-from-t relative flex flex-wrap items-center justify-center bg-gradient-to-b from-red-900 to-red-600/50 py-4 text-center"
     >
-      <div class="w-full px-4 py-4">
-        <h2 class="text-left text-2xl font-bold text-green-500">Editor's pick #{{ index + 1 }}</h2>
+      <div>
+        <img
+          :src="myMovieListData.sourceOfMovies + data.poster_path"
+          class="w-40"
+          :id="data.id"
+          :alt="data.original_title"
+        />
       </div>
-      <img
-        :src="myMovieListData.sourceOfMovies + data.poster_path"
-        class="w-40"
-        :id="data.id"
-        :alt="data.original_title"
-      />
-      <p class="w-full text-lg text-black">{{ data.original_title }}</p>
+      <div class="w-1/2 px-4 py-4 text-left">
+        <h2 class="text-left text-2xl font-bold text-green-500">Editor's pick #{{ index + 1 }}</h2>
+        <br />
+        <p class="text-lg font-bold text-white">{{ data.original_title }}</p>
+        <p class="line-clamp-4">
+          Overview: <br />
+          {{ data.overview }}
+        </p>
+        <br />
+        <p>Rating: {{ data.vote_average }}</p>
+      </div>
     </swiper-slide>
     <div class="absolute bottom-[10%] right-4 z-20 flex flex-col gap-4">
       <button class="next bg-white p-1">next</button>
