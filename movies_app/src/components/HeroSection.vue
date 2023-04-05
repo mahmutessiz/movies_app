@@ -47,18 +47,18 @@ const modules = [Pagination, Navigation, Autoplay]
       v-for="(data, index) in myMovieListData.myMovieList.items"
       :virtualIndex="data.id"
       :key="data.id"
-      class="bg-gradient-from-t relative flex h-[30rem] flex-wrap items-center justify-center bg-gradient-to-b from-gray-900 to-gray-600/50 py-4 text-center"
+      class="relative flex h-[35rem] flex-wrap items-center justify-center text-center"
     >
       <div class="absolute inset-0 -z-10 flex h-full w-full justify-center">
         <img
           :src="myMovieListData.sourceOfMoviesBackdropImg + data.backdrop_path"
-          class="h-[30rem] w-full"
+          class="h-[35rem] w-full"
           :id="data.id"
           :alt="data.original_title"
         />
       </div>
       <div
-        class="bg-gradient-from-t relative flex h-[30rem] w-full flex-wrap items-center justify-center bg-gradient-to-b from-gray-900 to-gray-600/50 py-4 text-center"
+        class="bg-gradient-from-t justify-left relative flex h-[35rem] w-full flex-wrap items-center bg-gradient-to-b from-gray-900 to-gray-700/80 px-2 text-center backdrop-blur-[5px] md:px-12"
       >
         <div>
           <img
@@ -84,8 +84,8 @@ const modules = [Pagination, Navigation, Autoplay]
       </div>
     </swiper-slide>
     <div class="absolute bottom-[10%] right-4 z-20 flex flex-col gap-4">
-      <button class="next bg-white p-1">next</button>
-      <button class="prev bg-white p-1">prev</button>
+      <button class="next bg-white p-2">next</button>
+      <button class="prev bg-white p-2">prev</button>
     </div>
   </swiper>
 </template>
