@@ -1,6 +1,4 @@
 <script setup>
-import { onMounted, computed } from 'vue'
-
 //Swiper.js setup
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/swiper-bundle.css'
@@ -15,10 +13,6 @@ import { useApiStore } from '../stores/api'
 const myMovieListData = useApiStore()
 
 myMovieListData.fetchMovieListData()
-
-onMounted(() => {
-  computed(() => myMovieListData.myMovieList)
-})
 
 const modules = [Pagination, Navigation, Autoplay]
 
@@ -62,8 +56,8 @@ const modules = [Pagination, Navigation, Autoplay]
       >
         <div>
           <img
-            :src="myMovieListData.sourceOfMovies + data.poster_path"
-            class="w-40"
+            :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
+            class="w-40 md:w-60"
             :id="data.id"
             :alt="data.original_title"
           />
@@ -75,7 +69,6 @@ const modules = [Pagination, Navigation, Autoplay]
           <br />
           <p class="text-lg font-bold text-white">{{ data.original_title }}</p>
           <p class="line-clamp-4">
-            Overview: <br />
             {{ data.overview }}
           </p>
           <br />

@@ -7,6 +7,12 @@ import { Pagination, Navigation, Autoplay } from 'swiper'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
+//Pinia setup
+import { useApiStore } from '../stores/api'
+
+const topMoviesData = useApiStore()
+topMoviesData.fetchTopMoviesData()
+
 const modules = [Pagination, Navigation, Autoplay]
 </script>
 
