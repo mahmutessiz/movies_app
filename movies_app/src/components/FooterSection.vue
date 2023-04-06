@@ -1,4 +1,15 @@
 <template>
+  <div class="w-full bg-rose-900 px-4 py-2 pl-8 text-left">
+    <p class="md:w-1/2">
+      This product uses the TMDB API but is not endorsed or certified by TMDB. All data and/or
+      images used are attributed to TMDB as the source. For more information, please refer to the
+      <a
+        href="https://www.themoviedb.org/documentation/api/terms-of-use"
+        class="text-blue-500 underline"
+        >TMDB API Terms of Use
+      </a>
+    </p>
+  </div>
   <footer class="footer bg-gray-800 p-10 text-base-content">
     <div>
       <span class="footer-title">Services</span>

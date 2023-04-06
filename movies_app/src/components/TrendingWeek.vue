@@ -10,8 +10,8 @@ import 'swiper/css/navigation'
 //Pinia setup
 import { useApiStore } from '../stores/api'
 
-const topMoviesData = useApiStore()
-topMoviesData.fetchTopMoviesData()
+const trendingMoviesData = useApiStore()
+trendingMoviesData.fetchTrendingMoviesData()
 
 const modules = [Pagination, Navigation, Autoplay]
 </script>
@@ -19,12 +19,12 @@ const modules = [Pagination, Navigation, Autoplay]
 <template>
   <div class="mt-12">
     <div class="w-full px-4 py-4">
-      <h2 class="text-2xl font-bold text-green-500">Trending this week</h2>
+      <h2 class="text-center text-2xl font-bold text-green-500">Trending this week</h2>
     </div>
     <swiper
-      :slidesPerView="3"
-      :spaceBetween="30"
-      :loop="true"
+      :slidesPerView="5"
+      :loop="false"
+      :rewind="true"
       :autoplay="{
         delay: 5000,
         disableOnInteraction: false
@@ -33,17 +33,21 @@ const modules = [Pagination, Navigation, Autoplay]
         clickable: true
       }"
       :modules="modules"
-      class="mySwiper bg-slate-400"
+      class="mySwiper"
     >
-      <swiper-slide class="h-96 w-96 bg-white"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-green-400"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-white"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-green-400"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-white"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-green-400"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-white"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-green-400"></swiper-slide>
-      <swiper-slide class="h-96 w-96 bg-white"></swiper-slide>
+      <swiper-slide
+        class="flex justify-center bg-rose-900/80 px-4 py-8"
+        v-for="data in trendingMoviesData.trendingWeekMoviesData.results"
+        :key="data.id"
+      >
+        <div>
+          <img
+            :src="trendingMoviesData.sourceOfMoviePosterUrl + data.poster_path"
+            alt=""
+            class="w-40"
+          />
+        </div>
+      </swiper-slide>
     </swiper>
   </div>
 </template>

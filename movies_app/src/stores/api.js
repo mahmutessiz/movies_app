@@ -6,14 +6,18 @@ export const useApiStore = defineStore('api', {
     movieListApiKey: import.meta.env.VITE_API_KEY,
     movieListApiUrl: import.meta.env.VITE_API_URL + '/list/8247631',
     sourceOfMoviePosterUrl: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/',
+    sourceOfMoviesBackdropImg: 'https://www.themoviedb.org/t/p/w1280',
 
     // My personal movie list
-    sourceOfMoviesBackdropImg: 'https://www.themoviedb.org/t/p/w1280',
     myMovieList: [],
 
     // Top movies
     topMoviesDataUrl: import.meta.env.VITE_API_URL + '/movie/top_rated',
-    topMoviesData: []
+    topMoviesData: [],
+
+    // Trending this week
+    trendingWeekMoviesDataUrl: import.meta.env.VITE_API_URL + '/trending/movie/week',
+    trendingWeekMoviesData: []
   }),
   actions: {
     // Get My Personal List
@@ -30,6 +34,18 @@ export const useApiStore = defineStore('api', {
         .get(`${this.topMoviesDataUrl}?api_key=${this.movieListApiKey}${'&language=en-US&page=1'}`)
         .then((response) => {
           this.topMoviesData = response.data
+        })
+    },
+    // Get trending movies data
+    async fetchTrendingMoviesData() {
+      await axios
+        .get(
+          `${this.trendingWeekMoviesDataUrl}?api_key=${
+            this.movieListApiKey
+          }${'&language=en-US&page=1'}`
+        )
+        .then((response) => {
+          this.trendingWeekMoviesData = response.data
         })
     }
   }
