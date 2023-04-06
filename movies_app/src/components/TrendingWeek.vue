@@ -22,7 +22,7 @@ const modules = [Pagination, Navigation, Autoplay]
       <h2 class="text-center text-2xl font-bold text-green-500">Trending this week</h2>
     </div>
     <swiper
-      :slidesPerView="5"
+      :slidesPerView="4"
       :loop="false"
       :rewind="true"
       :autoplay="{
@@ -36,7 +36,7 @@ const modules = [Pagination, Navigation, Autoplay]
       class="mySwiper"
     >
       <swiper-slide
-        class="flex justify-center bg-rose-900/80 px-4 py-8"
+        class="flex justify-center bg-rose-900/80 px-4 py-12"
         v-for="data in trendingMoviesData.trendingWeekMoviesData.results"
         :key="data.id"
       >
@@ -44,7 +44,7 @@ const modules = [Pagination, Navigation, Autoplay]
           <img
             :src="trendingMoviesData.sourceOfMoviePosterUrl + data.poster_path"
             alt=""
-            class="w-40"
+            class="w-80"
           />
         </div>
       </swiper-slide>

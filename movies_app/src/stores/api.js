@@ -17,8 +17,13 @@ export const useApiStore = defineStore('api', {
 
     // Trending this week
     trendingWeekMoviesDataUrl: import.meta.env.VITE_API_URL + '/trending/movie/week',
-    trendingWeekMoviesData: []
+    trendingWeekMoviesData: [],
+
+    // Upcoming
+    upcomingMoviesDataUrl: import.meta.env.VITE_API_URL + '/movie/upcoming',
+    upcomingMoviesData: []
   }),
+
   actions: {
     // Get My Personal List
     async fetchMovieListData() {
@@ -28,6 +33,7 @@ export const useApiStore = defineStore('api', {
           this.myMovieList = response.data
         })
     },
+
     // Get The Top Movies Data
     async fetchTopMoviesData() {
       await axios
@@ -36,6 +42,7 @@ export const useApiStore = defineStore('api', {
           this.topMoviesData = response.data
         })
     },
+
     // Get trending movies data
     async fetchTrendingMoviesData() {
       await axios
@@ -46,6 +53,17 @@ export const useApiStore = defineStore('api', {
         )
         .then((response) => {
           this.trendingWeekMoviesData = response.data
+        })
+    },
+
+    // Get upcoming movies data
+    async fetchUpComingMoviesData() {
+      await axios
+        .get(
+          `${this.upcomingMoviesDataUrl}?api_key=${this.movieListApiKey}${'&language=en-US&page=1'}`
+        )
+        .then((response) => {
+          this.upcomingMoviesData = response.data
         })
     }
   }
