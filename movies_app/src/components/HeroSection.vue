@@ -34,7 +34,8 @@ const modules = [Pagination, Navigation, Autoplay]
     :navigation="{ prevEl: '.prev', nextEl: '.next' }"
     :autoplay="{
       delay: 5000,
-      disableOnInteraction: true
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
     }"
     :modules="modules"
     class="mySwiper relative overflow-hidden"
