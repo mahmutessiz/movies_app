@@ -60,7 +60,7 @@ const modules = [Pagination, Navigation, Autoplay]
         <div>
           <img
             :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
-            class="w-40 md:w-60"
+            class="w-40 md:ml-20 md:w-60"
             :id="data.id"
             :alt="data.original_title"
           />
