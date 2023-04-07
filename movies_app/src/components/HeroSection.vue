@@ -16,7 +16,9 @@ myMovieListData.fetchMovieListData()
 
 const modules = [Pagination, Navigation, Autoplay]
 
-//When i use vue router i can pull id of the movie via fetching image id
+/**
+ * TODO: When i use vue router i can pull id of the movie via fetching image id
+ */
 </script>
 
 <template>
@@ -32,7 +34,7 @@ const modules = [Pagination, Navigation, Autoplay]
     :navigation="{ prevEl: '.prev', nextEl: '.next' }"
     :autoplay="{
       delay: 5000,
-      disableOnInteraction: false
+      disableOnInteraction: true
     }"
     :modules="modules"
     class="mySwiper relative overflow-hidden"
