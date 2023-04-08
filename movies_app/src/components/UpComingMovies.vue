@@ -13,17 +13,19 @@ upcomingMoviesData.fetchUpComingMoviesData();
         Upcoming Movies & Recently Released
       </h2>
     </div>
-    <ul class="flex w-full flex-wrap items-center justify-center gap-4 p-4">
+    <ul
+      class="flex w-full flex-nowrap gap-4 overflow-x-auto p-4 sm:flex-wrap sm:items-center sm:justify-center"
+    >
       <li
         v-for="data in upcomingMoviesData.upcomingMoviesData.results"
         :key="data.id"
-        class="w-60 shrink-0 overflow-hidden rounded-lg bg-slate-800 text-center text-green-300 shadow-md shadow-rose-500"
+        class="w-40 shrink-0 overflow-hidden rounded-lg bg-slate-800 text-center text-green-300 shadow-md shadow-rose-500 sm:w-60"
       >
         <img
           :src="upcomingMoviesData.sourceOfMoviePosterUrl + data.poster_path"
           :alt="data.title"
         />
-        <p class="p-2">
+        <p class="flex h-24 flex-wrap items-center justify-center p-2">
           {{ data.title }} <br />
           <span class="text-xs">release date: {{ data.release_date }}</span>
         </p>

@@ -36,7 +36,7 @@ const modules = [Pagination, Navigation, Autoplay];
       class="mySwiper"
     >
       <swiper-slide
-        class="flex justify-center bg-rose-900/80 px-4 py-12"
+        class="flex justify-center bg-base-300 px-4 py-12"
         v-for="data in trendingMoviesData.trendingWeekMoviesData.results"
         :key="data.id"
       >

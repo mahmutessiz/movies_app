@@ -44,7 +44,7 @@ const modules = [Pagination, Navigation, Autoplay];
       v-for="(data, index) in myMovieListData.myMovieList.items"
       :virtualIndex="data.id"
       :key="data.id"
-      class="relative flex h-[35rem] flex-wrap items-center justify-center text-center"
+      class="relative flex flex-wrap items-center justify-center text-center sm:h-[35rem]"
     >
       <div class="absolute inset-0 -z-10 flex h-full w-full justify-center">
         <img
@@ -55,31 +55,33 @@ const modules = [Pagination, Navigation, Autoplay];
         />
       </div>
       <div
-        class="bg-gradient-from-t justify-left relative flex h-[35rem] w-full flex-wrap items-center bg-gradient-to-b from-gray-900 to-gray-700/80 px-2 text-center backdrop-blur-[5px] md:px-12"
+        class="bg-gradient-from-t sm:justify-left relative flex h-[35rem] w-full flex-wrap items-start bg-gradient-to-b from-gray-900 to-gray-700/80 px-2 py-9 text-center backdrop-blur-[5px] sm:items-center md:px-12"
       >
         <div>
           <img
             :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
-            class="w-40 md:ml-20 md:w-60"
+            class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60"
             :id="data.id"
             :alt="data.original_title"
           />
         </div>
-        <div class="w-1/2 px-4 py-4 text-left">
-          <h2 class="text-left text-2xl font-bold text-green-500">
+        <div class="w-full px-4 py-4 text-left sm:w-1/2">
+          <h2 class="text-left font-semibold text-green-500 sm:text-2xl">
             Editor's pick #{{ index + 1 }}
           </h2>
-          <br />
+          <br class="hidden sm:block" />
           <p class="text-lg font-bold text-white">{{ data.original_title }}</p>
           <p class="line-clamp-4">
             {{ data.overview }}
           </p>
-          <br />
-          <p>Rating: {{ data.vote_average }}</p>
+          <br class="hidden sm:block" />
+          <p class="pt-2 text-white/80 sm:pt-0">
+            <span class="text-white">Rating:</span> {{ data.vote_average }}
+          </p>
         </div>
       </div>
     </swiper-slide>
-    <div class="absolute bottom-[10%] right-4 z-20 flex flex-col gap-4">
+    <div class="absolute bottom-[10%] right-4 z-20 hidden flex-col gap-4 sm:flex">
       <button class="next bg-white p-2">next</button>
       <button class="prev bg-white p-2">prev</button>
     </div>

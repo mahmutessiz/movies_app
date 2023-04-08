@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full justify-center bg-rose-900 px-4 py-2 pl-8 text-center">
+  <div class="mt-12 flex w-full justify-center bg-rose-900 px-4 py-2 pl-8 text-center">
     <p class="md:w-1/2">
       This product uses the TMDB API but is not endorsed or certified by TMDB. All data and/or
       images used are attributed to TMDB as the source. For more information:
