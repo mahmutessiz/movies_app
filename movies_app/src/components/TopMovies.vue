@@ -1,9 +1,9 @@
 <script setup>
 //Pinia setup
-import { useApiStore } from '../stores/api'
+import { useApiStore } from '../stores/api';
 
-const topMoviesData = useApiStore()
-topMoviesData.fetchTopMoviesData()
+const topMoviesData = useApiStore();
+topMoviesData.fetchTopMoviesData();
 </script>
 <template>
   <div class="w-full">

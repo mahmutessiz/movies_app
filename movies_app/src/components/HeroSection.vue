@@ -1,20 +1,20 @@
 <script setup>
 //Swiper.js setup
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
-import 'swiper/css'
-import { Pagination, Navigation, Autoplay } from 'swiper'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css';
+import { Pagination, Navigation, Autoplay } from 'swiper';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 //Pinia setup
-import { useApiStore } from '../stores/api'
+import { useApiStore } from '../stores/api';
 
-const myMovieListData = useApiStore()
+const myMovieListData = useApiStore();
 
-myMovieListData.fetchMovieListData()
+myMovieListData.fetchMovieListData();
 
-const modules = [Pagination, Navigation, Autoplay]
+const modules = [Pagination, Navigation, Autoplay];
 
 /**
  * TODO: When i use vue router i can pull id of the movie via fetching image id

@@ -1,9 +1,9 @@
 <script setup>
 //Pinia setup
-import { useApiStore } from '../stores/api'
+import { useApiStore } from '../stores/api';
 
-const upcomingMoviesData = useApiStore()
-upcomingMoviesData.fetchUpComingMoviesData()
+const upcomingMoviesData = useApiStore();
+upcomingMoviesData.fetchUpComingMoviesData();
 </script>
 
 <template>

@@ -1,19 +1,19 @@
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
-import 'swiper/css'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
+import 'swiper/css';
 
-import { Pagination, Navigation, Autoplay } from 'swiper'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+import { Pagination, Navigation, Autoplay } from 'swiper';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 //Pinia setup
-import { useApiStore } from '../stores/api'
+import { useApiStore } from '../stores/api';
 
-const trendingMoviesData = useApiStore()
-trendingMoviesData.fetchTrendingMoviesData()
+const trendingMoviesData = useApiStore();
+trendingMoviesData.fetchTrendingMoviesData();
 
-const modules = [Pagination, Navigation, Autoplay]
+const modules = [Pagination, Navigation, Autoplay];
 </script>
 
 <template>

@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia'
-import axios from 'axios'
+import { defineStore } from 'pinia';
+import axios from 'axios';
 
 export const useApiStore = defineStore('api', {
   state: () => ({
@@ -30,8 +30,8 @@ export const useApiStore = defineStore('api', {
       await axios
         .get(`${this.movieListApiUrl}?api_key=${this.movieListApiKey}`)
         .then((response) => {
-          this.myMovieList = response.data
-        })
+          this.myMovieList = response.data;
+        });
     },
 
     // Get The Top Movies Data
@@ -39,8 +39,8 @@ export const useApiStore = defineStore('api', {
       await axios
         .get(`${this.topMoviesDataUrl}?api_key=${this.movieListApiKey}${'&language=en-US&page=1'}`)
         .then((response) => {
-          this.topMoviesData = response.data
-        })
+          this.topMoviesData = response.data;
+        });
     },
 
     // Get trending movies data
@@ -52,8 +52,8 @@ export const useApiStore = defineStore('api', {
           }${'&language=en-US&page=1'}`
         )
         .then((response) => {
-          this.trendingWeekMoviesData = response.data
-        })
+          this.trendingWeekMoviesData = response.data;
+        });
     },
 
     // Get upcoming movies data
@@ -63,8 +63,8 @@ export const useApiStore = defineStore('api', {
           `${this.upcomingMoviesDataUrl}?api_key=${this.movieListApiKey}${'&language=en-US&page=1'}`
         )
         .then((response) => {
-          this.upcomingMoviesData = response.data
-        })
+          this.upcomingMoviesData = response.data;
+        });
     }
   }
-})
+});
