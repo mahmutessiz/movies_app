@@ -58,7 +58,7 @@ const modules = [Pagination, Navigation, Autoplay];
         class="bg-gradient-from-t w-full bg-gradient-to-b from-gray-900 to-gray-700/80 backdrop-blur-[5px]"
       >
         <div
-          class="relative flex h-[35rem]  flex-wrap items-end justify-start px-2 py-9 text-center sm:pb-24 md:px-12"
+          class="relative flex h-[35rem] flex-wrap items-end justify-start px-2 py-9 text-center sm:pb-24 md:px-12"
         >
           <div>
             <img

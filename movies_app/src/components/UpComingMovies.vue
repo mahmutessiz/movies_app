@@ -23,8 +23,8 @@ upcomingMoviesData.fetchUpComingMoviesData();
           :src="upcomingMoviesData.sourceOfMoviePosterUrl + data.poster_path"
           :alt="data.title"
         />
-        <p class="flex h-24 flex-wrap items-center justify-center p-2">
-          {{ data.title }} <br />
+        <p class="flex h-24 flex-col items-center justify-center p-2">
+          {{ data.title }}
           <span class="text-xs">release date: {{ data.release_date }}</span>
         </p>
       </li>
