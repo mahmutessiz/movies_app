@@ -89,9 +89,6 @@ const modules = [Pagination, Navigation, Autoplay];
 </template>
 
 <style>
-.swiper-pagination-bullet-active {
-  background-color: #20c44c !important;
-}
 .swiper-pagination-progressbar-fill {
   background-color: rgba(185, 35, 35, 0.815) !important;
 }

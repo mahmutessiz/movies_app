@@ -19,10 +19,9 @@ const modules = [Pagination, Navigation, Autoplay];
 <template>
   <div class="mt-12">
     <div class="w-full px-4 py-4">
-      <h2 class="text-center text-2xl font-bold text-green-500">Trending this week</h2>
+      <h2 class="text-2xl font-bold text-green-500 sm:text-center">Trending this week</h2>
     </div>
     <swiper
-      :slidesPerView="4"
       :loop="false"
       :rewind="true"
       :autoplay="{
@@ -34,9 +33,23 @@ const modules = [Pagination, Navigation, Autoplay];
       }"
       :modules="modules"
       class="mySwiper"
+      :breakpoints="{
+        200: {
+          slidesPerView: 1
+        },
+        450: {
+          slidesPerView: 2
+        },
+        600: {
+          slidesPerView: 3
+        },
+        999: {
+          slidesPerView: 5
+        }
+      }"
     >
       <swiper-slide
-        class="flex justify-center bg-base-300 px-4 py-12"
+        class="flex justify-center bg-base-300 px-4 sm:py-12"
         v-for="data in trendingMoviesData.trendingWeekMoviesData.results"
         :key="data.id"
       >
@@ -51,3 +64,9 @@ const modules = [Pagination, Navigation, Autoplay];
     </swiper>
   </div>
 </template>
+
+<style>
+.swiper-pagination-bullet-active {
+  background-color: #20c44c !important;
+}
+</style>

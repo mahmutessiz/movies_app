@@ -7,8 +7,8 @@
       <li class=""></li>
     </ul>
     <ul class="hidden gap-4 sm:flex">
-      <li>Trending</li>
-      <li>Top picks</li>
+      <li>Home</li>
+      <li>Series</li>
       <li>Categories</li>
     </ul>
     <div class="flex gap-4 sm:hidden">
