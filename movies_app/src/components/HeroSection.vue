@@ -69,13 +69,19 @@ const modules = [Pagination, Navigation, Autoplay];
             />
           </div>
           <div class="w-full px-4 py-4 text-left sm:w-1/2 sm:py-0">
-            <h2 class="text-left font-semibold text-green-500">Editor's picks #{{ index + 1 }}</h2>
+            <h2 class="pb-2 text-left text-green-500/70">Editor's picks #{{ index + 1 }}</h2>
 
             <p class="text-lg font-bold text-white">{{ data.title }}</p>
             <p class="line-clamp-4 md:line-clamp-none">
               {{ data.overview }}
             </p>
             <br class="hidden sm:block" />
+            <p class="hidden pt-2 text-white/80 sm:pt-0 md:block">
+              <span class="text-white">Original title:</span> {{ data.original_title }}
+            </p>
+            <p class="hidden pt-2 text-white/80 sm:pt-0 md:block">
+              <span class="text-white">Release date:</span> {{ data.release_date }}
+            </p>
             <p class="pt-2 text-white/80 sm:pt-0">
               <span class="text-white">Rating:</span> {{ data.vote_average }}
             </p>
@@ -84,7 +90,7 @@ const modules = [Pagination, Navigation, Autoplay];
       </div>
     </swiper-slide>
     <div class="absolute bottom-[10%] right-4 z-20 hidden flex-col gap-4 sm:flex">
-      <button class="next rounded-lg bg-slate-900 p-2">
+      <button class="next btn rounded-lg bg-slate-900 p-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
           <g fill="currentColor">
             <path d="M11.732 9.36a1 1 0 1 1 1.536 1.28l-5 6a1 1 0 1 1-1.536-1.28l5-6Z" />
@@ -92,7 +98,7 @@ const modules = [Pagination, Navigation, Autoplay];
           </g>
         </svg>
       </button>
-      <button class="prev rounded-lg bg-slate-900 p-2">
+      <button class="prev btn rounded-lg bg-slate-900 p-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
           <g fill="currentColor">
             <path d="M6.732 10.64a1 1 0 1 1 1.536-1.28l5 6a1 1 0 1 1-1.536 1.28l-5-6Z" />

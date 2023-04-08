@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 flex items-center justify-between gap-4 bg-slate-800/70 px-4 py-4 text-white backdrop-blur-md sm:justify-around md:-ml-20"
+    class="sticky -top-1 z-50 flex items-center justify-between gap-4 bg-slate-800/70 px-4 py-4 text-white backdrop-blur-md sm:justify-around md:-ml-20"
   >
     <img src="../assets/logo.png" class="w-20 opacity-80 sm:w-36" alt="" />
     <ul class="flex gap-4">
@@ -11,7 +11,7 @@
       <li>Series</li>
       <li>Categories</li>
     </ul>
-    <div class="flex gap-4 sm:hidden">
+    <div class="flex items-center gap-4 sm:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
         <path
           fill="currentColor"
@@ -19,12 +19,47 @@
         ></path>
       </svg>
 
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-        <path
-          fill="currentColor"
-          d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5s1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5S5.5 6.83 5.5 6S4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5s1.5-.68 1.5-1.5s-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"
-        ></path>
-      </svg>
+      <div class="drawer-content">
+        <div @click="drawerStatusToggle">
+          <label
+            for="my-drawer-4"
+            class="drawer-button btn border-0 bg-opacity-0 hover:bg-slate-700"
+            ><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5s1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5S5.5 6.83 5.5 6S4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5s1.5-.68 1.5-1.5s-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"
+              ></path>
+            </svg>
+          </label>
+        </div>
+      </div>
     </div>
   </header>
+
+  <div id="drawer-display-status" class="drawer drawer-end fixed top-16 z-40 hidden">
+    <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-side">
+      <label for="my-drawer-4" class="drawer-overlay" @click="drawerStatusToggle"></label>
+      <ul class="menu w-80 bg-base-100/50 p-4 text-base-content backdrop-blur-md">
+        <li><a>Sidebar Item 1</a></li>
+        <li><a>Sidebar Item 2</a></li>
+      </ul>
+    </div>
+  </div>
 </template>
+
+<script setup>
+let isDrawerHidden = true;
+function drawerStatusToggle() {
+  const draver = document.querySelector('#drawer-display-status');
+  if (isDrawerHidden == true) {
+    draver.classList.remove('hidden');
+    isDrawerHidden = false;
+  } else {
+    setTimeout(() => {
+      draver.classList.add('hidden');
+      isDrawerHidden = true;
+    }, 200);
+  }
+}
+</script>

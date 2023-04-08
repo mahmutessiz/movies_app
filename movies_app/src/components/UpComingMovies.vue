@@ -9,9 +9,7 @@ upcomingMoviesData.fetchUpComingMoviesData();
 <template>
   <div class="mt-12 w-full">
     <div class="w-full p-4">
-      <h2 class="text-center text-2xl font-bold text-green-500">
-        Upcoming Movies & Recently Released
-      </h2>
+      <h2 class="text-xl font-bold text-green-500 sm:text-center">Upcoming & Recently Released</h2>
     </div>
     <ul
       class="flex w-full flex-nowrap gap-4 overflow-x-auto p-4 sm:flex-wrap sm:items-center sm:justify-center"

@@ -21,7 +21,11 @@ export const useApiStore = defineStore('api', {
 
     // Upcoming
     upcomingMoviesDataUrl: import.meta.env.VITE_API_URL + '/movie/upcoming',
-    upcomingMoviesData: []
+    upcomingMoviesData: [],
+
+    // Popular
+    popularMoviesUrl: import.meta.env.VITE_API_URL + '/movie/popular',
+    popularMoviesData: []
   }),
 
   actions: {
@@ -64,6 +68,15 @@ export const useApiStore = defineStore('api', {
         )
         .then((response) => {
           this.upcomingMoviesData = response.data;
+        });
+    },
+
+    // Get popular movies data
+    async fetchPopularMoviesData() {
+      await axios
+        .get(`${this.popularMoviesUrl}?api_key=${this.movieListApiKey}${'&language=en-US&page=1'}`)
+        .then((response) => {
+          this.popularMoviesData = response.data;
         });
     }
   }
