@@ -55,29 +55,31 @@ const modules = [Pagination, Navigation, Autoplay];
         />
       </div>
       <div
-        class="bg-gradient-from-t sm:justify-left relative flex h-[35rem] w-full flex-wrap items-start bg-gradient-to-b from-gray-900 to-gray-700/80 px-2 py-9 text-center backdrop-blur-[5px] sm:items-center md:px-12"
+        class="bg-gradient-from-t bg-gradient-to-b from-gray-900 to-gray-700/80 backdrop-blur-[5px]"
       >
-        <div>
-          <img
-            :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
-            class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60"
-            :id="data.id"
-            :alt="data.original_title"
-          />
-        </div>
-        <div class="w-full px-4 py-4 text-left sm:w-1/2">
-          <h2 class="text-left font-semibold text-green-500 sm:text-2xl">
-            Editor's pick #{{ index + 1 }}
-          </h2>
-          <br class="hidden sm:block" />
-          <p class="text-lg font-bold text-white">{{ data.original_title }}</p>
-          <p class="line-clamp-4">
-            {{ data.overview }}
-          </p>
-          <br class="hidden sm:block" />
-          <p class="pt-2 text-white/80 sm:pt-0">
-            <span class="text-white">Rating:</span> {{ data.vote_average }}
-          </p>
+        <div
+          class="relative flex h-[35rem] w-full flex-wrap items-end justify-start px-2 py-9 text-center sm:pb-24 md:px-12"
+        >
+          <div>
+            <img
+              :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
+              class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60"
+              :id="data.id"
+              :alt="data.original_title"
+            />
+          </div>
+          <div class="w-full px-4 py-4 text-left sm:w-1/2 sm:py-0">
+            <h2 class="text-left font-semibold text-green-500">Editor's picks #{{ index + 1 }}</h2>
+
+            <p class="text-lg font-bold text-white">{{ data.title }}</p>
+            <p class="line-clamp-4 md:line-clamp-none">
+              {{ data.overview }}
+            </p>
+            <br class="hidden sm:block" />
+            <p class="pt-2 text-white/80 sm:pt-0">
+              <span class="text-white">Rating:</span> {{ data.vote_average }}
+            </p>
+          </div>
         </div>
       </div>
     </swiper-slide>
