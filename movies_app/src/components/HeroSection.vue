@@ -84,8 +84,22 @@ const modules = [Pagination, Navigation, Autoplay];
       </div>
     </swiper-slide>
     <div class="absolute bottom-[10%] right-4 z-20 hidden flex-col gap-4 sm:flex">
-      <button class="next bg-white p-2">next</button>
-      <button class="prev bg-white p-2">prev</button>
+      <button class="next rounded-lg bg-slate-900 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
+          <g fill="currentColor">
+            <path d="M11.732 9.36a1 1 0 1 1 1.536 1.28l-5 6a1 1 0 1 1-1.536-1.28l5-6Z" />
+            <path d="M6.732 4.64a1 1 0 0 1 1.536-1.28l5 6a1 1 0 1 1-1.536 1.28l-5-6Z" />
+          </g>
+        </svg>
+      </button>
+      <button class="prev rounded-lg bg-slate-900 p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20">
+          <g fill="currentColor">
+            <path d="M6.732 10.64a1 1 0 1 1 1.536-1.28l5 6a1 1 0 1 1-1.536 1.28l-5-6Z" />
+            <path d="M8.268 10.64a1 1 0 1 1-1.536-1.28l5-6a1 1 0 1 1 1.536 1.28l-5 6Z" />
+          </g>
+        </svg>
+      </button>
     </div>
   </swiper>
 </template>
