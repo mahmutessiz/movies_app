@@ -8,31 +8,44 @@ export const useSeriesApiStore = defineStore('seriesApi', {
     sourceOfMoviesBackdropImg: 'https://www.themoviedb.org/t/p/w1280',
 
     // My personal movie list
-    /* movieListApiUrl: import.meta.env.VITE_API_URL + '/list/8247631',
-    myMovieList: [], */
+    seriesListApiUrl: import.meta.env.VITE_API_URL + '/list/8248369',
+    mySeriesListData: [],
 
     // Top series
     topSeriesDataUrl: import.meta.env.VITE_API_URL + '/tv/top_rated',
-    topSeriesData: []
+    topSeriesData: [],
 
-    // Trending this week
-
+    // Airing today
+    airingTodayDataUrl: import.meta.env.VITE_API_URL + '/tv/airing_today',
+    airingTodayData: []
     // Upcoming
 
     // Popular
   }),
 
   actions: {
+    // Get My Personal List
+    async fetchSeriesListData() {
+      await axios.get(`${this.seriesListApiUrl}?api_key=${this.apiKey}`).then((response) => {
+        this.mySeriesListData = response.data;
+      });
+    },
     // Get The Top Movies Data
     async fetchTopSeriesData() {
+      await axios.get(`${this.topSeriesDataUrl}?api_key=${this.apiKey}`).then((response) => {
+        this.topSeriesData = response.data;
+      });
+    },
+    // Get airing today data
+    async fetchairingTodayData() {
       await axios
         .get(
-          `${this.topSeriesDataUrl}?api_key=${
+          `${this.airingTodayDataUrl}?api_key=${
             this.apiKey
           }${'&language=en-US&page=1&with_original_language=en'}`
         )
         .then((response) => {
-          this.topSeriesData = response.data;
+          this.airingTodayData = response.data;
         });
     }
   }

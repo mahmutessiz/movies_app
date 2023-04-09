@@ -8,11 +8,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 //Pinia setup
-import { useApiStore } from '../../stores/api';
+import { useSeriesApiStore } from '../../stores/seriesApi';
 
-const myMovieListData = useApiStore();
-
-myMovieListData.fetchMovieListData();
+const seriesListData = useSeriesApiStore();
+seriesListData.fetchSeriesListData();
 
 const modules = [Pagination, Navigation, Autoplay];
 
@@ -41,14 +40,14 @@ const modules = [Pagination, Navigation, Autoplay];
     class="mySwiper relative overflow-hidden"
   >
     <swiper-slide
-      v-for="(data, index) in myMovieListData.myMovieList.items"
+      v-for="(data, index) in seriesListData.mySeriesListData.items"
       :virtualIndex="data.id"
       :key="data.id"
       class="relatived flex flex-wrap items-center justify-center text-center sm:h-[35rem]"
     >
       <div class="absolute inset-0 -z-10 flex h-full w-full justify-center">
         <img
-          :src="myMovieListData.sourceOfMoviesBackdropImg + data.backdrop_path"
+          :src="seriesListData.sourceOfMoviesBackdropImg + data.backdrop_path"
           class="h-[35rem] w-full"
           :id="data.id"
           :alt="data.original_title"
@@ -62,7 +61,7 @@ const modules = [Pagination, Navigation, Autoplay];
         >
           <div>
             <img
-              :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
+              :src="seriesListData.sourceOfMoviePosterUrl + data.poster_path"
               class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60"
               :id="data.id"
               :alt="data.original_title"

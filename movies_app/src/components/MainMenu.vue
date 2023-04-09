@@ -1,4 +1,9 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+
+/**
+ * Drawer behavior setting
+ */
 let isDrawerHidden = true;
 function drawerStatusToggle() {
   const draver = document.querySelector('#drawer-display-status');
@@ -23,8 +28,8 @@ function drawerStatusToggle() {
       <li class=""></li>
     </ul>
     <ul class="hidden gap-4 sm:flex">
-      <li>Home</li>
-      <li>Series</li>
+      <li><RouterLink to="/">Home</RouterLink></li>
+      <li><RouterLink to="/series">Series</RouterLink></li>
       <li>Categories</li>
     </ul>
     <div class="flex items-center gap-4 sm:hidden">
