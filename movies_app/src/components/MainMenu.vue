@@ -1,3 +1,19 @@
+<script setup>
+let isDrawerHidden = true;
+function drawerStatusToggle() {
+  const draver = document.querySelector('#drawer-display-status');
+  if (isDrawerHidden == true) {
+    draver.classList.remove('hidden');
+    isDrawerHidden = false;
+  } else {
+    setTimeout(() => {
+      draver.classList.add('hidden');
+      isDrawerHidden = true;
+    }, 100);
+  }
+}
+</script>
+
 <template>
   <header
     class="sticky -top-1 z-50 flex items-center justify-between gap-4 bg-slate-800/70 px-4 py-4 text-white backdrop-blur-md sm:justify-around md:-ml-20"
@@ -47,19 +63,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-let isDrawerHidden = true;
-function drawerStatusToggle() {
-  const draver = document.querySelector('#drawer-display-status');
-  if (isDrawerHidden == true) {
-    draver.classList.remove('hidden');
-    isDrawerHidden = false;
-  } else {
-    setTimeout(() => {
-      draver.classList.add('hidden');
-      isDrawerHidden = true;
-    }, 200);
-  }
-}
-</script>
