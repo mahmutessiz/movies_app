@@ -11,11 +11,13 @@ popularSeriesData.fetchPopularSeriesData();
     <div class="w-full p-4">
       <h2 class="text-xl font-bold text-green-500 sm:text-center">Popular Series</h2>
     </div>
-    <ul class="flex w-full items-center gap-4 overflow-x-scroll p-4 sm:flex-wrap sm:justify-center">
+    <ul
+      class="flex w-full items-center gap-4 overflow-x-scroll p-4 sm:flex-wrap sm:justify-center sm:overflow-x-hidden"
+    >
       <li
         v-for="data in popularSeriesData.popularSeriesData.results"
         :key="data.id"
-        class="w-40 shrink-0 rounded-lg bg-slate-800 text-center text-green-300 shadow-md shadow-rose-500 sm:w-60 sm:overflow-hidden"
+        class="w-40 shrink-0 rounded-lg bg-slate-800 text-center text-green-300 shadow-md shadow-rose-500 sm:w-60"
       >
         <img :src="popularSeriesData.sourceOfMoviePosterUrl + data.poster_path" :alt="data.name" />
         <p class="flex h-16 flex-col items-center justify-center p-2">{{ data.name }}</p>

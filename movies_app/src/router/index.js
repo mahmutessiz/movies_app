@@ -23,7 +23,10 @@ const router = createRouter({
       name: 'series',
       component: SeriesView
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { top: 0, behavior: 'smooth' };
+  }
 });
 
 export default router;
