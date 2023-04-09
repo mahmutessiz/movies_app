@@ -17,10 +17,11 @@ export const useSeriesApiStore = defineStore('seriesApi', {
 
     // Airing today
     airingTodayDataUrl: import.meta.env.VITE_API_URL + '/tv/airing_today',
-    airingTodayData: []
-    // Upcoming
+    airingTodayData: [],
 
     // Popular
+    popularSeriesDataUrl: import.meta.env.VITE_API_URL + '/tv/popular',
+    popularSeriesData: []
   }),
 
   actions: {
@@ -46,6 +47,18 @@ export const useSeriesApiStore = defineStore('seriesApi', {
         )
         .then((response) => {
           this.airingTodayData = response.data;
+        });
+    },
+    // Get popular series data
+    async fetchPopularSeriesData() {
+      await axios
+        .get(
+          `${this.popularSeriesDataUrl}?api_key=${
+            this.apiKey
+          }${'&language=en-US&page=1&with_original_language=en'}`
+        )
+        .then((response) => {
+          this.popularSeriesData = response.data;
         });
     }
   }

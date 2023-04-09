@@ -4,18 +4,10 @@ import { RouterLink } from 'vue-router';
 /**
  * Drawer behavior setting
  */
-let isDrawerHidden = true;
+
 function drawerStatusToggle() {
   const draver = document.querySelector('#drawer-display-status');
-  if (isDrawerHidden == true) {
-    draver.classList.remove('hidden');
-    isDrawerHidden = false;
-  } else {
-    setTimeout(() => {
-      draver.classList.add('hidden');
-      isDrawerHidden = true;
-    }, 100);
-  }
+  draver.classList.toggle('hidden');
 }
 </script>
 
@@ -23,7 +15,10 @@ function drawerStatusToggle() {
   <header
     class="sticky -top-1 z-50 flex items-center justify-between gap-4 bg-slate-800/70 px-4 py-4 text-white backdrop-blur-md sm:justify-around md:-ml-20"
   >
-    <img src="../assets/logo.png" class="w-20 opacity-80 sm:w-36" alt="" />
+    <RouterLink to="/"
+      ><img src="../assets/logo.png" class="w-20 opacity-80 sm:w-36" alt=""
+    /></RouterLink>
+
     <ul class="flex gap-4">
       <li class=""></li>
     </ul>
@@ -44,7 +39,7 @@ function drawerStatusToggle() {
         <div @click="drawerStatusToggle">
           <label
             for="my-drawer-4"
-            class="drawer-button btn border-0 bg-opacity-0 hover:bg-slate-700"
+            class="drawer-button btn border-0 bg-opacity-0 text-white hover:bg-slate-700"
             ><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
@@ -62,8 +57,10 @@ function drawerStatusToggle() {
     <div class="drawer-side">
       <label for="my-drawer-4" class="drawer-overlay" @click="drawerStatusToggle"></label>
       <ul class="menu w-80 bg-base-100/50 p-4 text-base-content backdrop-blur-md">
-        <li><a>Sidebar Item 1</a></li>
-        <li><a>Sidebar Item 2</a></li>
+        <li @click="deneme"><RouterLink to="/">Home</RouterLink></li>
+        <li><RouterLink to="/">Movies</RouterLink></li>
+        <li><RouterLink to="/series">Series</RouterLink></li>
+        <li><RouterLink to="/">Explore</RouterLink></li>
       </ul>
     </div>
   </div>

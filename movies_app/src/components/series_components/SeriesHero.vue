@@ -70,16 +70,16 @@ const modules = [Pagination, Navigation, Autoplay];
           <div class="w-full px-4 py-4 text-left sm:w-1/2 sm:py-0">
             <h2 class="pb-2 text-left text-green-500/70">Editor's picks #{{ index + 1 }}</h2>
 
-            <p class="text-lg font-bold text-white">{{ data.title }}</p>
+            <p class="text-lg font-bold text-white">{{ data.name }}</p>
             <p class="line-clamp-4 md:line-clamp-none">
               {{ data.overview }}
             </p>
             <br class="hidden sm:block" />
             <p class="hidden pt-2 text-white/80 sm:pt-0 md:block">
-              <span class="text-white">Original title:</span> {{ data.original_title }}
+              <span class="text-white">Original title:</span> {{ data.original_name }}
             </p>
             <p class="hidden pt-2 text-white/80 sm:pt-0 md:block">
-              <span class="text-white">Release date:</span> {{ data.release_date }}
+              <span class="text-white">Release date:</span> {{ data.first_air_date }}
             </p>
             <p class="pt-2 text-white/80 sm:pt-0">
               <span class="text-white">Rating:</span> {{ data.vote_average }}
