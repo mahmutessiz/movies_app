@@ -46,9 +46,15 @@ export const useSeriesApiStore = defineStore('seriesApi', {
     },
     // Get The Top Movies Data
     async fetchTopSeriesData() {
-      await axios.get(`${this.topSeriesDataUrl}?api_key=${this.apiKey}`).then((response) => {
-        this.topSeriesData = response.data;
-      });
+      await axios
+        .get(
+          `${this.topSeriesDataUrl}?api_key=${
+            this.apiKey
+          }${'&language=en-US&page=1&with_original_language=en'}`
+        )
+        .then((response) => {
+          this.topSeriesData = response.data;
+        });
     },
     // Get airing today data
     async fetchairingTodayData() {
