@@ -21,15 +21,28 @@ export const useSeriesApiStore = defineStore('seriesApi', {
 
     // Popular
     popularSeriesDataUrl: import.meta.env.VITE_API_URL + '/tv/popular',
-    popularSeriesData: []
+    popularSeriesData: [],
+
+    // Loading animation
+    isFinished: false
   }),
+  getters: {
+    isFinish() {
+      return this.isFinished;
+    }
+  },
 
   actions: {
     // Get My Personal List
     async fetchSeriesListData() {
-      await axios.get(`${this.seriesListApiUrl}?api_key=${this.apiKey}`).then((response) => {
-        this.mySeriesListData = response.data;
-      });
+      await axios
+        .get(`${this.seriesListApiUrl}?api_key=${this.apiKey}`)
+        .then((response) => {
+          this.mySeriesListData = response.data;
+        })
+        .finally(() => {
+          this.isFinished = true;
+        });
     },
     // Get The Top Movies Data
     async fetchTopSeriesData() {

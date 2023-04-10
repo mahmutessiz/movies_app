@@ -25,9 +25,16 @@ export const useApiStore = defineStore('api', {
 
     // Popular
     popularMoviesUrl: import.meta.env.VITE_API_URL + '/movie/popular',
-    popularMoviesData: []
-  }),
+    popularMoviesData: [],
 
+    // is finished
+    isFinished: false
+  }),
+  getters: {
+    isFinish() {
+      return this.isFinished;
+    }
+  },
   actions: {
     // Get My Personal List
     async fetchMovieListData() {
@@ -35,6 +42,9 @@ export const useApiStore = defineStore('api', {
         .get(`${this.movieListApiUrl}?api_key=${this.movieListApiKey}`)
         .then((response) => {
           this.myMovieList = response.data;
+        })
+        .finally(() => {
+          this.isFinished = true;
         });
     },
 

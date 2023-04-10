@@ -23,10 +23,9 @@ function drawerStatusToggle() {
       <li class="">
         <input
           type="text"
-          name=""
+          name="searchBar"
           class="h-8 w-60 rounded-l-md bg-slate-900"
           placeholder=" Search"
-          id=""
         />
       </li>
       <li class="grid cursor-pointer place-items-center rounded-r-md bg-black p-2">
