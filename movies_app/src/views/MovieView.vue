@@ -23,10 +23,18 @@ onMounted(async () => {
 <template>
   <section>
     <div class="relative flex overflow-hidden">
-      <img :src="backdropUrl + movieData.backdrop_path" class="absolute h-full" alt="" />
+      <img
+        :src="backdropUrl + movieData.backdrop_path"
+        class="absolute h-full w-full blur-sm"
+        :alt="movieData.title"
+      />
 
-      <div class="z-10 flex w-2/3 flex-wrap gap-4 bg-slate-900/50 px-4 py-4 backdrop-blur-sm">
-        <img :src="posterUrl + movieData.poster_path" :alt="movieData.title" class="w-1/3" />
+      <div class="z-10 flex w-2/3 flex-wrap gap-4 bg-slate-950/80 px-4 py-12">
+        <img
+          :src="posterUrl + movieData.poster_path"
+          :alt="movieData.title"
+          class="w-1/3 min-w-[15rem]"
+        />
 
         <div class="w-1/2">
           <ul>
