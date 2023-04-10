@@ -64,9 +64,3 @@ const modules = [Pagination, Navigation, Autoplay];
     </swiper>
   </div>
 </template>
-
-<style>
-.swiper-pagination-bullet-active {
-  background-color: #20c44c !important;
-}
-</style>

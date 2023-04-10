@@ -13,8 +13,8 @@ const myMovieListData = useApiStore();
 
 <template>
   <!-- Page load animation -->
-  <div class="fixed inset-0 z-50 bg-black/50" v-if="myMovieListData.isFinish == false">
-    <div class="h-screen bg-white">
+  <div class="fixed inset-0 z-50" v-if="myMovieListData.isFinish == false">
+    <div class="h-screen bg-black/90">
       <div class="flex h-full items-center justify-center">
         <img
           class="h-16 w-16"

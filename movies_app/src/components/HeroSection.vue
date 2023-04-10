@@ -1,4 +1,7 @@
 <script setup>
+// Import router
+import { useRouter } from 'vue-router';
+
 //Swiper.js setup
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
@@ -10,15 +13,15 @@ import 'swiper/css/navigation';
 //Pinia setup
 import { useApiStore } from '../stores/api';
 
+// Pinia codes
 const myMovieListData = useApiStore();
-
 myMovieListData.fetchMovieListData();
 
+// Swiperjs codes
 const modules = [Pagination, Navigation, Autoplay];
 
-/**
- * TODO: When i use vue router i can pull id of the movie via fetching image id
- */
+// Router codes
+const router = useRouter();
 </script>
 
 <template>
@@ -66,6 +69,7 @@ const modules = [Pagination, Navigation, Autoplay];
               class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60"
               :id="data.id"
               :alt="data.original_title"
+              @click="router.push(`/movie/${data.id}`)"
             />
           </div>
           <div class="w-full px-4 py-4 text-left sm:w-1/2 sm:py-0">
@@ -109,9 +113,3 @@ const modules = [Pagination, Navigation, Autoplay];
     </div>
   </swiper>
 </template>
-
-<style>
-.swiper-pagination-progressbar-fill {
-  background-color: rgba(185, 35, 35, 0.815) !important;
-}
-</style>

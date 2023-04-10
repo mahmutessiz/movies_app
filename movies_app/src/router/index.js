@@ -22,6 +22,14 @@ const router = createRouter({
       path: '/series',
       name: 'series',
       component: SeriesView
+    },
+    {
+      path: '/movie/:id',
+      name: 'movie',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/MovieView.vue')
     }
   ],
   scrollBehavior() {

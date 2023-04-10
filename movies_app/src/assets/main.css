@@ -15,3 +15,9 @@ body{
   @apply w-full max-w-[2400px] bg-base-100;
   margin: 0 auto;
 }
+.swiper-pagination-bullet-active {
+  background-color: #20c44c !important;
+}
+.swiper-pagination-progressbar-fill {
+  background-color: rgba(185, 35, 35, 0.815) !important;
+}
