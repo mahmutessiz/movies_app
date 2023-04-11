@@ -16,6 +16,7 @@ let movieData = ref([]);
 
 // Api for similar movies
 let similarMoviesData = ref([]);
+let pageNumber = 1;
 let similarMoviesUrl =
   import.meta.env.VITE_API_URL +
   '/movie/' +
@@ -23,7 +24,8 @@ let similarMoviesUrl =
   '/similar' +
   '?api_key=' +
   apiKey +
-  '&language=en-US&page=1';
+  '&language=en-US&page=' +
+  pageNumber;
 const isFinish = ref(false);
 
 onMounted(async () => {
@@ -43,6 +45,37 @@ async function reloadPage(similarData) {
     window.location.reload();
   });
 }
+
+/**
+ * !when load more button clicked push results of new page to similarMoviesData
+ */
+function count() {
+  pageNumber++;
+}
+
+async function loadMore() {
+  count();
+  await axios
+    .get(
+      import.meta.env.VITE_API_URL +
+        '/movie/' +
+        movieId +
+        '/similar' +
+        '?api_key=' +
+        apiKey +
+        '&language=en-US&page=' +
+        pageNumber
+    )
+    .then((response) => {
+      let data = response.data;
+      /*  similarMoviesData.value.results.push(data.results); */
+      data.results.forEach((element) => {
+        similarMoviesData.value.results.push(element);
+      });
+    });
+}
+
+console.log(similarMoviesData.value.results);
 </script>
 
 <template>
@@ -76,23 +109,26 @@ async function reloadPage(similarData) {
 
         <div class="w-full max-w-[40rem] px-2 py-4 md:w-1/2">
           <ul>
-            <li class="text-lg font-bold text-white/90">{{ movieData.title }}</li>
-            <li>{{ movieData.overview }}</li>
-            <li class="mt-2">
-              <span class="font-semibold text-white/90">Original title: </span>
+            <li class="text-xl font-bold text-white/90">{{ movieData.title }}</li>
+            <li class="mt-2">{{ movieData.overview }}</li>
+            <br />
+            <li>
+              <span class="font-semibold text-white/70">Original title: </span>
               {{ movieData.original_title }}
             </li>
-            <li class="mt-2">
-              <span class="font-semibold text-white/90"> Production companies: </span>
+            <li>
+              <span class="font-semibold text-white/70">Original language: </span>
+              {{ movieData.original_language }}
+            </li>
+            <li>
+              <span class="font-semibold text-white/70"> Production companies: </span>
 
               <span v-for="data in movieData.production_companies" :key="data.id">
                 {{ data.name }} &nbsp;
               </span>
             </li>
-            <li v-if="movieData.adult == false" class="mt-2 text-green-500">Adult?: false</li>
-            <li class="mt-2 text-warning" v-else>Adult content</li>
-            <li class="mt-2">
-              <span class="font-semibold text-white/90">Release date:</span>
+            <li>
+              <span class="font-semibold text-white/70">Release date:</span>
               {{ movieData.release_date }}
             </li>
           </ul>
@@ -123,6 +159,7 @@ async function reloadPage(similarData) {
             </div>
           </li>
         </ul>
+        <button class="btn-warning btn mt-8" @click="loadMore">Load more</button>
       </div>
     </div>
   </section>
