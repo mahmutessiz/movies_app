@@ -74,8 +74,6 @@ async function loadMore() {
       });
     });
 }
-
-console.log(similarMoviesData.value.results);
 </script>
 
 <template>
