@@ -16,7 +16,7 @@ function drawerStatusToggle() {
     class="sticky -top-1 z-50 flex w-full items-center justify-between bg-slate-800/70 px-4 py-4 text-white backdrop-blur-md sm:justify-evenly"
   >
     <RouterLink to="/"
-      ><img src="../assets/logo.png" class="w-20 opacity-80 sm:w-36" alt=""
+      ><img src="../assets/logo2.png" class="w-20 opacity-80 sm:w-36" alt=""
     /></RouterLink>
 
     <ul class="hidden sm:flex">
