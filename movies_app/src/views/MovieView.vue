@@ -24,11 +24,15 @@ let similarMoviesUrl =
   '?api_key=' +
   apiKey +
   '&language=en-US&page=1';
+const isFinish = ref(false);
 
 onMounted(async () => {
-  await axios.get(movieUrl).then((response) => {
-    movieData.value = response.data;
-  });
+  await axios
+    .get(movieUrl)
+    .then((response) => {
+      movieData.value = response.data;
+    })
+    .finally(() => (isFinish.value = true));
   await axios.get(similarMoviesUrl).then((response) => {
     similarMoviesData.value = response.data;
   });
@@ -42,6 +46,19 @@ async function reloadPage(similarData) {
 </script>
 
 <template>
+  <!-- Page load animation -->
+  <div class="fixed inset-0 z-50" v-if="isFinish == false">
+    <div class="h-screen bg-black/90">
+      <div class="flex h-full items-center justify-center">
+        <img
+          class="w-full sm:w-1/2"
+          src="../assets/b1cfddae9e7b9645b9cde7ad9ee4f6bf.gif"
+          alt="loading"
+        />
+      </div>
+    </div>
+  </div>
+
   <section>
     <div class="relative flex flex-wrap overflow-hidden">
       <img
