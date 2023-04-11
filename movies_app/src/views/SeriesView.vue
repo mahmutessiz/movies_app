@@ -15,9 +15,9 @@ const topSeriesData = useSeriesApiStore();
     <div class="h-screen bg-black/90">
       <div class="flex h-full items-center justify-center">
         <img
-          class="h-16 w-16"
-          src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif"
-          alt=""
+          class="w-full sm:w-1/2"
+          src="../assets/b1cfddae9e7b9645b9cde7ad9ee4f6bf.gif"
+          alt="loading"
         />
       </div>
     </div>

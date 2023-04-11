@@ -38,10 +38,18 @@ function drawerStatusToggle() {
       </li>
     </ul>
     <ul class="hidden gap-4 sm:flex">
-      <li><RouterLink to="/">Home</RouterLink></li>
-      <li><RouterLink to="/series">Series</RouterLink></li>
-      <li><RouterLink to="/">Anime</RouterLink></li>
-      <li>Explore</li>
+      <li class="hover:text-white/70">
+        <RouterLink to="/" class="focus:text-white/70 active:text-white/70">Home</RouterLink>
+      </li>
+      <li class="hover:text-white/70">
+        <RouterLink to="/series" class="focus:text-white/70 active:text-white/70"
+          >Series</RouterLink
+        >
+      </li>
+      <li class="hover:text-white/70">
+        <RouterLink to="/" class="focus:text-white/70 active:text-white/70">Anime</RouterLink>
+      </li>
+      <li class="hover:text-white/70">Explore</li>
     </ul>
     <div class="flex items-center gap-4 sm:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
