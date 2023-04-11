@@ -72,7 +72,7 @@ async function reloadPage(similarData) {
                 {{ data.name }} &nbsp;
               </span>
             </li>
-            <li v-if="movieData.adult == false" class="mt-2 text-green-500">Safe to watch</li>
+            <li v-if="movieData.adult == false" class="mt-2 text-green-500">Adult?: false</li>
             <li class="mt-2 text-warning" v-else>Adult content</li>
             <li class="mt-2">
               <span class="font-semibold text-white/90">Release date:</span>
@@ -88,7 +88,7 @@ async function reloadPage(similarData) {
       </h2>
       <div class="w-full">
         <ul
-          class="flex w-full items-start justify-start gap-4 overflow-x-auto text-center sm:flex-wrap sm:items-center sm:justify-center sm:overflow-x-hidden"
+          class="flex w-full items-start justify-start gap-4 overflow-x-auto py-4 text-center sm:flex-wrap sm:items-center sm:justify-center sm:overflow-x-hidden"
         >
           <li
             v-for="similarData in similarMoviesData.results"
@@ -98,7 +98,7 @@ async function reloadPage(similarData) {
             <div class="w-60">
               <img
                 :src="posterUrl + similarData.poster_path"
-                class="w-full"
+                class="w-full cursor-pointer"
                 :alt="similarData.title"
                 @click="reloadPage(similarData)"
               />

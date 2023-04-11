@@ -1,9 +1,12 @@
 <script setup>
+import { useRouter } from 'vue-router';
 //Pinia setup
 import { useApiStore } from '../stores/api';
 
 const popularMoviesData = useApiStore();
 popularMoviesData.fetchPopularMoviesData();
+
+const router = useRouter();
 </script>
 
 <template>
@@ -19,7 +22,12 @@ popularMoviesData.fetchPopularMoviesData();
         :key="data.id"
         class="w-40 shrink-0 rounded-lg bg-slate-800 text-center text-green-300 shadow-md shadow-rose-500 sm:w-60"
       >
-        <img :src="popularMoviesData.sourceOfMoviePosterUrl + data.poster_path" :alt="data.title" />
+        <img
+          class="cursor-pointer"
+          :src="popularMoviesData.sourceOfMoviePosterUrl + data.poster_path"
+          :alt="data.title"
+          @click="router.push(`/movie/${data.id}`)"
+        />
         <p class="h-16 p-2">{{ data.title }}</p>
       </li>
     </ul>

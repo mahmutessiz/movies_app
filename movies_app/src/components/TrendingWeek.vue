@@ -1,4 +1,5 @@
 <script setup>
+import { useRouter } from 'vue-router';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
 import 'swiper/css';
@@ -14,6 +15,7 @@ const trendingMoviesData = useApiStore();
 trendingMoviesData.fetchTrendingMoviesData();
 
 const modules = [Pagination, Navigation, Autoplay];
+const router = useRouter();
 </script>
 
 <template>
@@ -56,8 +58,9 @@ const modules = [Pagination, Navigation, Autoplay];
         <div>
           <img
             :src="trendingMoviesData.sourceOfMoviePosterUrl + data.poster_path"
+            @click="router.push(`/movie/${data.id}`)"
             alt=""
-            class="w-80"
+            class="w-80 cursor-pointer"
           />
         </div>
       </swiper-slide>
