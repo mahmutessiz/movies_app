@@ -2,6 +2,10 @@
 //Pinia setup
 import { useSeriesApiStore } from '../../stores/seriesApi';
 
+//router
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
 const popularSeriesData = useSeriesApiStore();
 popularSeriesData.fetchPopularSeriesData();
 </script>
@@ -19,7 +23,12 @@ popularSeriesData.fetchPopularSeriesData();
         :key="data.id"
         class="w-40 shrink-0 rounded-lg bg-slate-800 text-center text-green-300 shadow-md shadow-rose-500 sm:w-60"
       >
-        <img :src="popularSeriesData.sourceOfMoviePosterUrl + data.poster_path" :alt="data.name" />
+        <img
+          :src="popularSeriesData.sourceOfMoviePosterUrl + data.poster_path"
+          class="cursor-pointer"
+          :alt="data.name"
+          @click="router.push(`/tv/${data.id}`)"
+        />
         <p class="flex h-16 flex-col items-center justify-center p-2">{{ data.name }}</p>
       </li>
     </ul>

@@ -7,6 +7,9 @@ import { Pagination, Navigation, Autoplay } from 'swiper';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+//router
+import { useRouter } from 'vue-router';
+
 //Pinia setup
 import { useSeriesApiStore } from '../../stores/seriesApi';
 
@@ -14,6 +17,7 @@ const airingTodayData = useSeriesApiStore();
 airingTodayData.fetchairingTodayData();
 
 const modules = [Pagination, Navigation, Autoplay];
+const router = useRouter();
 </script>
 
 <template>
@@ -57,7 +61,8 @@ const modules = [Pagination, Navigation, Autoplay];
           <img
             :src="airingTodayData.sourceOfMoviePosterUrl + data.poster_path"
             alt=""
-            class="w-80"
+            class="w-80 cursor-pointer"
+            @click="router.push(`/tv/${data.id}`)"
           />
         </div>
       </swiper-slide>

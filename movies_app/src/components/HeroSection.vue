@@ -66,7 +66,7 @@ const router = useRouter();
           <div>
             <img
               :src="myMovieListData.sourceOfMoviePosterUrl + data.poster_path"
-              class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60 cursor-pointer"
+              class="ml-4 w-48 cursor-pointer sm:w-40 md:ml-20 md:w-60"
               :id="data.id"
               :alt="data.original_title"
               @click="router.push(`/movie/${data.id}`)"

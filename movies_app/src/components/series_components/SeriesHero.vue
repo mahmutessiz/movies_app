@@ -7,6 +7,9 @@ import { Pagination, Navigation, Autoplay } from 'swiper';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+//router
+import { useRouter } from 'vue-router';
+
 //Pinia setup
 import { useSeriesApiStore } from '../../stores/seriesApi';
 
@@ -18,6 +21,7 @@ const modules = [Pagination, Navigation, Autoplay];
 /**
  * TODO: When i use vue router i can pull id of the movie via fetching image id
  */
+const router = useRouter();
 </script>
 
 <template>
@@ -62,9 +66,10 @@ const modules = [Pagination, Navigation, Autoplay];
           <div>
             <img
               :src="seriesListData.sourceOfMoviePosterUrl + data.poster_path"
-              class="ml-4 w-48 sm:w-40 md:ml-20 md:w-60"
+              class="ml-4 w-48 cursor-pointer sm:w-40 md:ml-20 md:w-60"
               :id="data.id"
               :alt="data.original_title"
+              @click="router.push(`/tv/${data.id}`)"
             />
           </div>
           <div class="w-full px-4 py-4 text-left sm:w-1/2 sm:py-0">
