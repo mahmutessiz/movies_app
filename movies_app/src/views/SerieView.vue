@@ -15,7 +15,7 @@ const backdropUrl = ref('https://www.themoviedb.org/t/p/w1280');
 let movieData = ref([]);
 
 // Api for similar movies
-let similarMoviesData = ref([]);
+let similartvData = ref([]);
 let pageNumber = 1;
 let similarMoviesUrl =
   import.meta.env.VITE_API_URL +
@@ -36,7 +36,7 @@ onMounted(async () => {
     })
     .finally(() => (isFinish.value = true));
   await axios.get(similarMoviesUrl).then((response) => {
-    similarMoviesData.value = response.data;
+    similartvData.value = response.data;
   });
 });
 
@@ -47,7 +47,7 @@ async function reloadPage(similarData) {
 }
 
 /**
- * !when load more button clicked push results of new page to similarMoviesData
+ * !when load more button clicked push results of new page to similartvData
  */
 function count() {
   pageNumber++;
@@ -68,9 +68,9 @@ async function loadMore() {
     )
     .then((response) => {
       let data = response.data;
-      /*  similarMoviesData.value.results.push(data.results); */
+      /*  similartvData.value.results.push(data.results); */
       data.results.forEach((element) => {
-        similarMoviesData.value.results.push(element);
+        similartvData.value.results.push(element);
       });
     });
 }
@@ -142,7 +142,7 @@ async function loadMore() {
           class="flex w-full items-start justify-start gap-4 overflow-x-auto py-4 text-center sm:flex-wrap sm:items-center sm:justify-center sm:overflow-x-hidden"
         >
           <li
-            v-for="similarData in similarMoviesData.results"
+            v-for="similarData in similartvData.results"
             :key="similarData.id"
             class="shrink-0 overflow-hidden rounded-md shadow-md shadow-rose-500/60"
           >
