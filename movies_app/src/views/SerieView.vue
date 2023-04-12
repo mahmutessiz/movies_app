@@ -41,7 +41,7 @@ onMounted(async () => {
 });
 
 async function reloadPage(similarData) {
-  await router.push(`/movie/${similarData.id}`).then(() => {
+  await router.push(`/tv/${similarData.id}`).then(() => {
     window.location.reload();
   });
 }
