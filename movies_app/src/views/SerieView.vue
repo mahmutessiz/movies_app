@@ -146,7 +146,7 @@ async function loadMore() {
             :key="similarData.id"
             class="shrink-0 overflow-hidden rounded-md shadow-md shadow-rose-500/60"
           >
-            <div class="w-60">
+            <div class="w-60" v-if="similarData.poster_path">
               <img
                 :src="posterUrl + similarData.poster_path"
                 class="w-full cursor-pointer"
