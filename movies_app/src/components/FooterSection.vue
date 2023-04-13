@@ -13,10 +13,10 @@
 
   <footer class="footer footer-center rounded bg-base-200 p-10 text-base-content">
     <div class="grid grid-flow-col gap-4">
-      <a class="link-hover link">About us</a>
-      <a class="link-hover link">Contact</a>
-      <a class="link-hover link">Jobs</a>
-      <a class="link-hover link">Press kit</a>
+      <a class="link-hover link">Home</a>
+      <a class="link-hover link">Movies</a>
+      <a class="link-hover link">Series</a>
+      <a class="link-hover link" href="mailto:mahmutessiz71@gmail.com">Contact</a>
     </div>
     <div>
       <div class="grid grid-flow-col gap-4">
@@ -59,7 +59,7 @@
       </div>
     </div>
     <div>
-      <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+      <p>Copyright © 2023 - Mahmut Eşsiz</p>
     </div>
   </footer>
 </template>
