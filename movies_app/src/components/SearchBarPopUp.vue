@@ -59,7 +59,7 @@ watch(movieName, async (newValue) => {
         <input
           type="text"
           name="searchBar"
-          class="h-9 w-full rounded-l-md bg-slate-900"
+          class="h-9 w-full rounded-l-md bg-slate-900 px-2"
           placeholder=" Search"
           id="search-bar2"
           v-on:keyup.enter="sendToSearch"
