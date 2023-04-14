@@ -162,6 +162,7 @@ watch(movieName, async (newValue) => {
         class="z-40 grid max-h-20 w-full cursor-pointer grid-cols-12 overflow-hidden border-b border-warning/50 bg-black px-4 py-2"
         v-for="data in searchData.results"
         :key="data.id"
+        tabindex="0"
       >
         <img
           :src="sourceOfPosterUrl + data.poster_path"
