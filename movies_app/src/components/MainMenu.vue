@@ -194,11 +194,11 @@ watch(movieName, async (newValue) => {
           class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
           @click="
             if (data.media_type == 'movie') {
+              movieName = '';
               router.push(`/movie/${data.id}`);
-              movieName = '';
             } else {
-              router.push(`/tv/${data.id}`);
               movieName = '';
+              router.push(`/tv/${data.id}`);
             }
           "
         >
