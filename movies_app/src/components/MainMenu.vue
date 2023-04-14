@@ -169,8 +169,10 @@ watch(movieName, async (newValue) => {
           :alt="data.title"
           @click="
             if (data.media_type == 'movie') {
+              movieName = '';
               router.push(`/movie/${data.id}`);
             } else {
+              movieName = '';
               router.push(`/tv/${data.id}`);
             }
           "
@@ -180,11 +182,11 @@ watch(movieName, async (newValue) => {
           v-if="data.title != null || undefined || ''"
           @click="
             if (data.media_type == 'movie') {
+              movieName = '';
               router.push(`/movie/${data.id}`);
-              movieName = '';
             } else {
-              router.push(`/tv/${data.id}`);
               movieName = '';
+              router.push(`/tv/${data.id}`);
             }
           "
         >
