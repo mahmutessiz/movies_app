@@ -62,7 +62,7 @@ watch(movieName, async (newValue) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    error;
   }
 });
 </script>
@@ -155,7 +155,7 @@ watch(movieName, async (newValue) => {
   <!-- Search bar bottom results page -->
   <div
     class="fixed left-0 right-0 top-16 z-50 flex items-center justify-center"
-    v-if="searchData.results"
+    v-if="movieName.length >= 2"
   >
     <ul class="z-50 max-h-96 w-80 overflow-y-scroll bg-white">
       <li
@@ -167,14 +167,41 @@ watch(movieName, async (newValue) => {
           :src="sourceOfPosterUrl + data.poster_path"
           class="col-span-2 w-full"
           :alt="data.title"
+          @click="
+            if (data.media_type == 'movie') {
+              router.push(`/movie/${data.id}`);
+            } else {
+              router.push(`/tv/${data.id}`);
+            }
+          "
         />
         <p
           class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
           v-if="data.title != null || undefined || ''"
+          @click="
+            if (data.media_type == 'movie') {
+              router.push(`/movie/${data.id}`);
+              movieName = '';
+            } else {
+              router.push(`/tv/${data.id}`);
+              movieName = '';
+            }
+          "
         >
           {{ data.title }}
         </p>
-        <p class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white">
+        <p
+          class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
+          @click="
+            if (data.media_type == 'movie') {
+              router.push(`/movie/${data.id}`);
+              movieName = '';
+            } else {
+              router.push(`/tv/${data.id}`);
+              movieName = '';
+            }
+          "
+        >
           {{ data.name }}
         </p>
       </li>
