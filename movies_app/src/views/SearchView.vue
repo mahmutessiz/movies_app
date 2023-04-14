@@ -10,7 +10,6 @@ const route = useRoute();
  */
 const apiKey = import.meta.env.VITE_API_KEY;
 const sourceOfPosterUrl = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
-/* const sourceOfBackdropImg = 'https://www.themoviedb.org/t/p/w1280'; */
 
 const movieName = route.params.id;
 const searchUrl =
@@ -83,8 +82,8 @@ let searchData = ref([]);
           <p class="grid h-20 w-full place-items-center rounded-md bg-white text-red-500" v-else>
             image not found
           </p>
-          <p class="h-16 p-2" v-if="data.title">{{ data.title }}</p>
-          <p class="h-16 p-2" v-else>{{ data.name }}</p>
+          <p class="grid h-16 place-items-center p-2" v-if="data.title">{{ data.title }}</p>
+          <p class="grid h-16 place-items-center p-2" v-else>{{ data.name }}</p>
         </div>
       </li>
     </ul>
