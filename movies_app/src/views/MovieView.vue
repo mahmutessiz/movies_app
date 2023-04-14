@@ -148,6 +148,14 @@ async function loadMore() {
               </span>
             </li>
             <li>
+              <span class="font-semibold text-white/70">Type:</span>
+              {{ movieData.media_type }}
+            </li>
+            <li>
+              <span class="font-semibold text-white/70">Rating:</span>
+              {{ movieData.vote_average }}
+            </li>
+            <li>
               <span class="font-semibold text-white/70">Release date:</span>
               {{ movieData.release_date }}
             </li>
