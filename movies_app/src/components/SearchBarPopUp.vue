@@ -10,6 +10,18 @@ async function sendToSearch() {
   });
 }
 
+function sendToSearchMobile(params) {
+  if (params.media_type == 'movie') {
+    router.push('/movie/' + params.id).then(() => {
+      window.location.reload();
+    });
+  } else {
+    router.push('/tv/' + params.id).then(() => {
+      window.location.reload();
+    });
+  }
+}
+
 const apiKey = import.meta.env.VITE_API_KEY;
 const sourceOfPosterUrl = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
 
@@ -82,42 +94,18 @@ watch(movieName, async (newValue) => {
             :src="sourceOfPosterUrl + data.poster_path"
             class="col-span-2 w-full"
             :alt="data.title"
-            @click="
-              if (data.media_type == 'movie') {
-                movieName = '';
-                router.push(`/movie/${data.id}`);
-              } else {
-                movieName = '';
-                router.push(`/tv/${data.id}`);
-              }
-            "
+            @click="sendToSearchMobile(data)"
           />
           <p
             class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
             v-if="data.title != null || undefined || ''"
-            @click="
-              if (data.media_type == 'movie') {
-                movieName = '';
-                router.push(`/movie/${data.id}`);
-              } else {
-                movieName = '';
-                router.push(`/tv/${data.id}`);
-              }
-            "
+            @click="sendToSearchMobile(data)"
           >
             {{ data.title }}
           </p>
           <p
             class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
-            @click="
-              if (data.media_type == 'movie') {
-                movieName = '';
-                router.push(`/movie/${data.id}`);
-              } else {
-                movieName = '';
-                router.push(`/tv/${data.id}`);
-              }
-            "
+            @click="sendToSearchMobile(data)"
           >
             {{ data.name }}
           </p>
