@@ -1,7 +1,8 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router';
 import SearcBarPopUp from '../components/SearchBarPopUp.vue';
-
+import axios from 'axios';
+import { ref, watch, computed } from 'vue';
 /**
  * Drawer behavior setting
  */
@@ -32,6 +33,38 @@ function openSearchBar() {
     toggle = true;
   }
 }
+/**
+ * !Mini results
+ */
+
+/**
+ * Api
+ */
+const apiKey = import.meta.env.VITE_API_KEY;
+const sourceOfPosterUrl = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
+
+const movieName = ref('');
+
+let searchData = ref([]);
+
+const searchUrl = computed(
+  () =>
+    `${import.meta.env.VITE_API_URL}/search/multi?api_key=${apiKey}&language=en-US&query=${
+      movieName.value
+    }&page=1&include_adult=false`
+);
+
+watch(movieName, async (newValue) => {
+  try {
+    if (newValue.length >= 2) {
+      await axios.get(searchUrl.value).then((response) => {
+        searchData.value = response.data;
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 </script>
 
 <template>
@@ -47,9 +80,10 @@ function openSearchBar() {
         <input
           type="text"
           name="searchBar"
-          class="h-8 w-60 rounded-l-md bg-slate-900"
+          class="h-8 w-60 rounded-l-md bg-slate-900 px-4"
           placeholder=" Search"
           id="search-bar"
+          v-model="movieName"
           v-on:keyup.enter="sendToSearch"
         />
       </li>
@@ -118,5 +152,34 @@ function openSearchBar() {
       </ul>
     </div>
   </div>
+  <!-- Search bar bottom results page -->
+  <div
+    class="fixed left-0 right-0 top-16 z-50 flex items-center justify-center"
+    v-if="searchData.results"
+  >
+    <ul class="z-50 max-h-96 w-80 overflow-y-scroll bg-white">
+      <li
+        class="z-40 grid max-h-20 w-full cursor-pointer grid-cols-12 overflow-hidden border-b border-warning/50 bg-black px-4 py-2"
+        v-for="data in searchData.results"
+        :key="data.id"
+      >
+        <img
+          :src="sourceOfPosterUrl + data.poster_path"
+          class="col-span-2 w-full"
+          :alt="data.title"
+        />
+        <p
+          class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
+          v-if="data.title != null || undefined || ''"
+        >
+          {{ data.title }}
+        </p>
+        <p class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white">
+          {{ data.name }}
+        </p>
+      </li>
+    </ul>
+  </div>
+
   <SearcBarPopUp />
 </template>
