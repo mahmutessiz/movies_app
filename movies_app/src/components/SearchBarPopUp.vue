@@ -5,9 +5,11 @@ import axios from 'axios';
 const router = useRouter();
 async function sendToSearch() {
   const inputValue = document.querySelector('#search-bar2');
-  await router.push('/search/' + inputValue.value).then(() => {
-    window.location.reload();
-  });
+  if (inputValue.value != '') {
+    await router.push('/search/' + inputValue.value).then(() => {
+      window.location.reload();
+    });
+  }
 }
 
 function sendToSearchMobile(params) {

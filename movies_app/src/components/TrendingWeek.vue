@@ -21,7 +21,7 @@ const router = useRouter();
 <template>
   <div class="mt-12">
     <div class="w-full px-4 py-4">
-      <h2 class="text-xl font-bold text-green-500 sm:text-center">Trending this week</h2>
+      <h2 class="text-xl font-bold text-warning sm:text-center">Trending this week</h2>
     </div>
     <swiper
       :loop="false"

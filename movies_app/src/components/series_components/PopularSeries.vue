@@ -13,7 +13,7 @@ popularSeriesData.fetchPopularSeriesData();
 <template>
   <div class="mt-12 w-full">
     <div class="w-full p-4">
-      <h2 class="text-xl font-bold text-green-500 sm:text-center">Popular Series</h2>
+      <h2 class="text-xl font-bold text-warning sm:text-center">Popular Series</h2>
     </div>
     <ul
       class="flex w-full items-center gap-4 overflow-x-scroll p-4 sm:flex-wrap sm:justify-center sm:overflow-x-hidden"

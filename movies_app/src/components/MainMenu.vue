@@ -15,9 +15,11 @@ function drawerStatusToggle() {
 const router = useRouter();
 function sendToSearch() {
   const inputValue = document.querySelector('#search-bar');
-  router.push('/search/' + inputValue.value).then(() => {
-    window.location.reload();
-  });
+  if (inputValue.value != '') {
+    router.push('/search/' + inputValue.value).then(() => {
+      window.location.reload();
+    });
+  }
 }
 let toggle = true;
 function openSearchBar() {
