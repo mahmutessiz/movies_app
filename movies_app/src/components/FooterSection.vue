@@ -14,7 +14,7 @@ import { RouterLink } from 'vue-router';
     </p>
   </div>
 
-  <footer class="footer footer-center rounded bg-base-200 p-10 text-base-content">
+  <footer class="footer footer-center rounded bg-gray-800 p-10 text-white/70">
     <div class="grid grid-flow-col gap-4">
       <RouterLink to="/" class="link-hover link">Home</RouterLink>
       <RouterLink to="/" class="link-hover link">Movies</RouterLink>

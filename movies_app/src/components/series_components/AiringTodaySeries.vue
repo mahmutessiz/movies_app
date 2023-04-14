@@ -22,7 +22,7 @@ const router = useRouter();
 
 <template>
   <div class="mt-12">
-    <div class="w-full px-4 py-4">
+    <div class="w-full px-4 py-4 bg-slate-900">
       <h2 class="text-xl font-bold text-warning sm:text-center">Airing Today</h2>
     </div>
     <swiper
@@ -53,7 +53,7 @@ const router = useRouter();
       }"
     >
       <swiper-slide
-        class="flex justify-center bg-base-300 px-4 sm:py-12"
+        class="flex justify-center bg-slate-900 px-4 sm:py-12"
         v-for="data in airingTodayData.airingTodayData.results"
         :key="data.id"
       >
