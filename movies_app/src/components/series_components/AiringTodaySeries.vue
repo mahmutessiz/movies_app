@@ -22,7 +22,7 @@ const router = useRouter();
 
 <template>
   <div class="mt-12">
-    <div class="w-full px-4 py-4 bg-slate-900">
+    <div class="w-full bg-slate-900 px-4 py-4">
       <h2 class="text-xl font-bold text-warning sm:text-center">Airing Today</h2>
     </div>
     <swiper
