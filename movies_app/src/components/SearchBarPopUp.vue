@@ -1,5 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
+import { ref, watch, computed } from 'vue';
+import axios from 'axios';
 const router = useRouter();
 async function sendToSearch() {
   const inputValue = document.querySelector('#search-bar2');
@@ -7,6 +9,32 @@ async function sendToSearch() {
     window.location.reload();
   });
 }
+
+const apiKey = import.meta.env.VITE_API_KEY;
+const sourceOfPosterUrl = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
+
+const movieName = ref('');
+
+let searchData = ref([]);
+
+const searchUrl = computed(
+  () =>
+    `${import.meta.env.VITE_API_URL}/search/multi?api_key=${apiKey}&language=en-US&query=${
+      movieName.value
+    }&page=1&include_adult=false`
+);
+
+watch(movieName, async (newValue) => {
+  try {
+    if (newValue.length >= 2) {
+      await axios.get(searchUrl.value).then((response) => {
+        searchData.value = response.data;
+      });
+    }
+  } catch (error) {
+    error;
+  }
+});
 </script>
 
 <template>
@@ -23,6 +51,7 @@ async function sendToSearch() {
           placeholder=" Search"
           id="search-bar2"
           v-on:keyup.enter="sendToSearch"
+          v-model="movieName"
         />
       </li>
       <li
@@ -37,5 +66,63 @@ async function sendToSearch() {
         </svg>
       </li>
     </ul>
+    <!-- Search bar bottom results page -->
+    <div
+      class="fixed left-0 right-0 top-44 z-50 flex items-center justify-center"
+      v-if="movieName.length >= 2"
+    >
+      <ul class="z-50 max-h-96 w-80 overflow-y-scroll bg-white">
+        <li
+          class="z-50 grid max-h-20 w-full cursor-pointer grid-cols-12 overflow-hidden border-b border-warning/50 bg-black px-4 py-2"
+          v-for="data in searchData.results"
+          :key="data.id"
+          tabindex="0"
+        >
+          <img
+            :src="sourceOfPosterUrl + data.poster_path"
+            class="col-span-2 w-full"
+            :alt="data.title"
+            @click="
+              if (data.media_type == 'movie') {
+                movieName = '';
+                router.push(`/movie/${data.id}`);
+              } else {
+                movieName = '';
+                router.push(`/tv/${data.id}`);
+              }
+            "
+          />
+          <p
+            class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
+            v-if="data.title != null || undefined || ''"
+            @click="
+              if (data.media_type == 'movie') {
+                movieName = '';
+                router.push(`/movie/${data.id}`);
+              } else {
+                movieName = '';
+                router.push(`/tv/${data.id}`);
+              }
+            "
+          >
+            {{ data.title }}
+          </p>
+          <p
+            class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
+            @click="
+              if (data.media_type == 'movie') {
+                movieName = '';
+                router.push(`/movie/${data.id}`);
+              } else {
+                movieName = '';
+                router.push(`/tv/${data.id}`);
+              }
+            "
+          >
+            {{ data.name }}
+          </p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
