@@ -1,15 +1,15 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
 // Router import
 import { useRoute, useRouter } from 'vue-router';
 const router = useRouter();
-const route = useRoute();
-const movieId = route.params.id;
+let route = useRoute();
+const movieId = ref(route.params.id);
 
 // Api for selected movie
 const apiKey = import.meta.env.VITE_API_KEY;
-const movieUrl = import.meta.env.VITE_API_URL + '/movie/' + movieId + '?api_key=' + apiKey;
+const movieUrl = import.meta.env.VITE_API_URL + '/movie/' + movieId.value + '?api_key=' + apiKey;
 const posterUrl = ref('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/');
 const backdropUrl = ref('https://www.themoviedb.org/t/p/w1280');
 let movieData = ref([]);
@@ -20,7 +20,7 @@ let pageNumber = 1;
 let similarMoviesUrl =
   import.meta.env.VITE_API_URL +
   '/movie/' +
-  movieId +
+  movieId.value +
   '/similar' +
   '?api_key=' +
   apiKey +
@@ -40,11 +40,33 @@ onMounted(async () => {
   });
 });
 
-async function reloadPage(similarData) {
-  await router.push(`/movie/${similarData.id}`).then(() => {
-    window.location.reload();
-  });
-}
+watch(
+  () => route.params.id,
+  (newParams, oldParams) => {
+    if (newParams != oldParams) {
+      axios
+        .get(import.meta.env.VITE_API_URL + '/movie/' + newParams + '?api_key=' + apiKey)
+        .then((response) => {
+          movieData.value = response.data;
+        })
+        .finally(() => (isFinish.value = true));
+      axios
+        .get(
+          import.meta.env.VITE_API_URL +
+            '/movie/' +
+            newParams +
+            '/similar' +
+            '?api_key=' +
+            apiKey +
+            '&language=en-US&page=' +
+            pageNumber
+        )
+        .then((response) => {
+          similarMoviesData.value = response.data;
+        });
+    }
+  }
+);
 
 /**
  * !when load more button clicked push results of new page to similarMoviesData
@@ -59,7 +81,7 @@ async function loadMore() {
     .get(
       import.meta.env.VITE_API_URL +
         '/movie/' +
-        movieId +
+        movieId.value +
         '/similar' +
         '?api_key=' +
         apiKey +
@@ -151,7 +173,7 @@ async function loadMore() {
                 :src="posterUrl + similarData.poster_path"
                 class="w-full cursor-pointer"
                 :alt="similarData.title"
-                @click="reloadPage(similarData)"
+                @click="router.push(`/movie/` + similarData.id)"
               />
               <p class="flex h-16 items-center justify-center">{{ similarData.title }}</p>
             </div>

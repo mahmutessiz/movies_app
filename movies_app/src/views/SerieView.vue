@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
 // Router import
 import { useRoute, useRouter } from 'vue-router';
@@ -40,11 +40,33 @@ onMounted(async () => {
   });
 });
 
-async function reloadPage(similarData) {
-  await router.push(`/tv/${similarData.id}`).then(() => {
-    window.location.reload();
-  });
-}
+watch(
+  () => route.params.id,
+  (newParams, oldParams) => {
+    if (newParams != oldParams) {
+      axios
+        .get(import.meta.env.VITE_API_URL + '/tv/' + newParams + '?api_key=' + apiKey)
+        .then((response) => {
+          movieData.value = response.data;
+        })
+        .finally(() => (isFinish.value = true));
+      axios
+        .get(
+          import.meta.env.VITE_API_URL +
+            '/tv/' +
+            newParams +
+            '/similar' +
+            '?api_key=' +
+            apiKey +
+            '&language=en-US&page=' +
+            pageNumber
+        )
+        .then((response) => {
+          similartvData.value = response.data;
+        });
+    }
+  }
+);
 
 /**
  * !when load more button clicked push results of new page to similartvData
@@ -151,7 +173,7 @@ async function loadMore() {
                 :src="posterUrl + similarData.poster_path"
                 class="w-full cursor-pointer"
                 :alt="similarData.title"
-                @click="reloadPage(similarData)"
+                @click="router.push(`/tv/` + similarData.id)"
               />
               <p class="flex h-16 items-center justify-center">{{ similarData.name }}</p>
             </div>
