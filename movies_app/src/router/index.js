@@ -24,6 +24,11 @@ const router = createRouter({
       component: SeriesView
     },
     {
+      path: '/other',
+      name: 'other',
+      component: () => import('../views/ComingSoonView.vue')
+    },
+    {
       path: '/movie/:id',
       name: 'movie',
       // route level code-splitting

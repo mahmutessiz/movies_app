@@ -67,6 +67,21 @@ watch(movieName, async (newValue) => {
     error;
   }
 });
+function goToData(data) {
+  if (data.media_type == 'movie') {
+    router.push('/movie/' + data.id).then(() => {
+      window.location.reload();
+    });
+  } else if (data.media_type == 'tv') {
+    router.push('/tv/' + data.id).then(() => {
+      window.location.reload();
+    });
+  } else {
+    router.push('/other').then(() => {
+      window.location.reload();
+    });
+  }
+}
 </script>
 
 <template>
@@ -170,42 +185,18 @@ watch(movieName, async (newValue) => {
           :src="sourceOfPosterUrl + data.poster_path"
           class="col-span-2 w-full"
           :alt="data.title"
-          @click="
-            if (data.media_type == 'movie') {
-              movieName = '';
-              router.push(`/movie/${data.id}`);
-            } else {
-              movieName = '';
-              router.push(`/tv/${data.id}`);
-            }
-          "
+          @click="goToData(data)"
         />
         <p
           class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
           v-if="data.title != null || undefined || ''"
-          @click="
-            if (data.media_type == 'movie') {
-              movieName = '';
-              router.push(`/movie/${data.id}`);
-            } else {
-              movieName = '';
-              router.push(`/tv/${data.id}`);
-            }
-          "
+          @click="goToData(data)"
         >
           {{ data.title }}
         </p>
         <p
           class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
-          @click="
-            if (data.media_type == 'movie') {
-              movieName = '';
-              router.push(`/movie/${data.id}`);
-            } else {
-              movieName = '';
-              router.push(`/tv/${data.id}`);
-            }
-          "
+          @click="goToData(data)"
         >
           {{ data.name }}
         </p>

@@ -17,8 +17,12 @@ function sendToSearchMobile(params) {
     router.push('/movie/' + params.id).then(() => {
       window.location.reload();
     });
-  } else {
+  } else if (params.media_type == 'tv') {
     router.push('/tv/' + params.id).then(() => {
+      window.location.reload();
+    });
+  } else {
+    router.push('/other').then(() => {
       window.location.reload();
     });
   }

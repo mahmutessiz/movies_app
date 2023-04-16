@@ -148,6 +148,11 @@ async function loadMore() {
               >
             </li>
             <li>
+              <span class="font-semibold text-white/70"> Created by: </span>
+              <span v-for="data in movieData.created_by" :key="data.id">{{ data.name }}&nbsp;</span>
+            </li>
+
+            <li>
               <span class="font-semibold text-white/70"> Production companies: </span>
 
               <span v-for="data in movieData.production_companies" :key="data.id">
