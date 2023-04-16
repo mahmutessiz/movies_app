@@ -132,6 +132,7 @@ async function loadMore() {
     });
 }
 
+// Recommend
 function countRecommend() {
   pageNumberRec++;
 }
@@ -141,7 +142,7 @@ async function loadMoreRec() {
   await axios
     .get(
       import.meta.env.VITE_API_URL +
-        '/movie/' +
+        '/tv/' +
         movieId.value +
         '/recommendations' +
         '?api_key=' +
