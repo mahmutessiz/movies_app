@@ -42,32 +42,15 @@ const searchUrl = computed(
     }&page=1&include_adult=false`
 );
 
-const debounce = function (func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      timeout = null;
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-};
-
-const debouncedSearch = debounce(async (query) => {
+watch(movieName, async (newValue, oldValue) => {
   try {
-    if (query.length >= 2) {
-      const response = await axios.get(searchUrl.value);
-      searchData.value = response.data;
+    if (newValue.length >= 2 && newValue != oldValue) {
+      await axios.get(searchUrl.value).then((response) => {
+        searchData.value = response.data;
+      });
     }
   } catch (error) {
-    console.error(error);
-  }
-}, 500);
-
-watch(movieName, (newValue, oldValue) => {
-  if (newValue !== oldValue) {
-    debouncedSearch(newValue);
+    error;
   }
 });
 </script>
