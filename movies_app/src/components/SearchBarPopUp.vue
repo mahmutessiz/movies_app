@@ -42,9 +42,9 @@ const searchUrl = computed(
     }&page=1&include_adult=false`
 );
 
-watch(movieName, async (newValue) => {
+watch(movieName, async (newValue, oldValue) => {
   try {
-    if (newValue.length >= 2) {
+    if (newValue.length >= 2 && newValue != oldValue) {
       await axios.get(searchUrl.value).then((response) => {
         searchData.value = response.data;
       });

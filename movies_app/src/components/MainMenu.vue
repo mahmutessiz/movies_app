@@ -162,7 +162,7 @@ function goToData(data) {
     <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
     <div class="drawer-side">
       <label for="my-drawer-4" class="drawer-overlay" @click="drawerStatusToggle"></label>
-      <ul class="menu w-80 bg-base-100/50 p-4 text-base-content backdrop-blur-md">
+      <ul class="menu w-80 bg-slate-800/40 p-4 text-white/80 backdrop-blur-md">
         <li @click="deneme"><RouterLink to="/">Home</RouterLink></li>
         <li><RouterLink to="/">Movies</RouterLink></li>
         <li><RouterLink to="/series">Series</RouterLink></li>
