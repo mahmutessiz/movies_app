@@ -125,7 +125,6 @@ async function loadMore() {
     )
     .then((response) => {
       let data = response.data;
-      /*  similartvData.value.results.push(data.results); */
       data.results.forEach((element) => {
         similartvData.value.results.push(element);
       });
@@ -151,7 +150,6 @@ async function loadMoreRec() {
     )
     .then((response) => {
       let data = response.data;
-      /*  similarMoviesData.value.results.push(data.results); */
       data.results.forEach((element) => {
         recomendedMoviesData.value.results.push(element);
       });
