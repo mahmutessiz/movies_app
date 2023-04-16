@@ -28,11 +28,29 @@ let similarMoviesUrl =
   pageNumber;
 const isFinish = ref(false);
 
+// Api for recomended
+let recomendedMoviesData = ref([]);
+let pageNumberRec = 1;
+let recomendedUrl =
+  import.meta.env.VITE_API_URL +
+  '/movie/' +
+  movieId.value +
+  '/recommendations' +
+  '?api_key=' +
+  apiKey +
+  '&language=en-US&page=' +
+  pageNumberRec;
+
 onMounted(async () => {
   await axios
     .get(movieUrl)
     .then((response) => {
       movieData.value = response.data;
+    })
+    .then(async () => {
+      await axios.get(recomendedUrl).then((response) => {
+        recomendedMoviesData.value = response.data;
+      });
     })
     .finally(() => (isFinish.value = true));
   await axios.get(similarMoviesUrl).then((response) => {
@@ -44,6 +62,7 @@ watch(
   () => route.params.id,
   (newParams, oldParams) => {
     if (newParams != oldParams) {
+      // Similar movies
       axios
         .get(import.meta.env.VITE_API_URL + '/movie/' + newParams + '?api_key=' + apiKey)
         .then((response) => {
@@ -63,6 +82,22 @@ watch(
         )
         .then((response) => {
           similarMoviesData.value = response.data;
+        });
+
+      // Recommended movies
+      axios
+        .get(
+          import.meta.env.VITE_API_URL +
+            '/movie/' +
+            newParams +
+            '/recommendations' +
+            '?api_key=' +
+            apiKey +
+            '&language=en-US&page=' +
+            pageNumberRec
+        )
+        .then((response) => {
+          recomendedMoviesData.value = response.data;
         });
     }
   }
@@ -93,6 +128,32 @@ async function loadMore() {
       /*  similarMoviesData.value.results.push(data.results); */
       data.results.forEach((element) => {
         similarMoviesData.value.results.push(element);
+      });
+    });
+}
+
+function countRecommend() {
+  pageNumberRec++;
+}
+
+async function loadMoreRec() {
+  countRecommend();
+  await axios
+    .get(
+      import.meta.env.VITE_API_URL +
+        '/movie/' +
+        movieId.value +
+        '/recommendations' +
+        '?api_key=' +
+        apiKey +
+        '&language=en-US&page=' +
+        pageNumberRec
+    )
+    .then((response) => {
+      let data = response.data;
+      /*  similarMoviesData.value.results.push(data.results); */
+      data.results.forEach((element) => {
+        recomendedMoviesData.value.results.push(element);
       });
     });
 }
@@ -168,6 +229,34 @@ async function loadMore() {
         </div>
       </div>
     </div>
+    <!-- Recommended movies -->
+    <div class="mt-12 w-full px-4 py-4 sm:text-center">
+      <h2 class="pb-9 text-lg font-bold text-warning">Recomended</h2>
+      <div class="w-full">
+        <ul
+          class="flex w-full items-start justify-start gap-4 overflow-x-auto py-4 text-center sm:flex-wrap sm:items-center sm:justify-center sm:overflow-x-hidden"
+        >
+          <li
+            v-for="recommededData in recomendedMoviesData.results"
+            :key="recommededData.id"
+            class="shrink-0 overflow-hidden rounded-md shadow-md shadow-rose-500/60"
+          >
+            <div class="w-60" v-if="recommededData.poster_path">
+              <img
+                :src="posterUrl + recommededData.poster_path"
+                class="w-full cursor-pointer"
+                :alt="recommededData.title"
+                @click="router.push(`/movie/` + recommededData.id)"
+              />
+              <p class="flex h-16 items-center justify-center">{{ recommededData.title }}</p>
+            </div>
+          </li>
+        </ul>
+        <button class="btn-warning btn mt-8" @click="loadMoreRec">Load more</button>
+      </div>
+    </div>
+
+    <!-- Similar movies -->
     <div class="mt-12 w-full px-4 py-4 sm:text-center">
       <h2 class="pb-9 text-lg font-bold text-slate-100/60">
         Similar to <span class="text-warning">{{ movieData.title }}</span>
