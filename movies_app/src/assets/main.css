@@ -12,7 +12,7 @@ body{
   background-color: rgb(15, 1, 1);
 }
 #app{
-  @apply w-full max-w-[2400px] bg-gray-800 text-slate-300;
+  @apply w-full max-w-[2400px] bg-gray-800 text-slate-300/80;
   margin: 0 auto;
 }
 .swiper-pagination-bullet-active {

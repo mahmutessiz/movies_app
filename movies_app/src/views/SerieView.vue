@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
+
 // Router import
 import { useRoute, useRouter } from 'vue-router';
 const router = useRouter();
@@ -124,7 +125,7 @@ async function loadMore() {
         <img
           :src="posterUrl + movieData.poster_path"
           :alt="movieData.title"
-          class="w-1/3 min-w-[13rem] max-w-[20rem] md:min-w-[15rem]"
+          class="max-h-[30rem] w-[20rem] md:min-w-[15rem]"
         />
 
         <div class="w-full max-w-[40rem] px-2 py-4 md:w-1/2">
@@ -141,6 +142,12 @@ async function loadMore() {
               {{ movieData.original_language }}
             </li>
             <li>
+              <span class="font-semibold text-white/70"> Genres: </span>
+              <span v-for="genreData in movieData.genres" :key="genreData"
+                >{{ genreData.name }}&nbsp;</span
+              >
+            </li>
+            <li>
               <span class="font-semibold text-white/70"> Production companies: </span>
 
               <span v-for="data in movieData.production_companies" :key="data.id">
@@ -149,11 +156,11 @@ async function loadMore() {
             </li>
             <li>
               <span class="font-semibold text-white/70">Type:</span>
-              {{ movieData.media_type }}
+              {{ $route.name }}
             </li>
             <li>
               <span class="font-semibold text-white/70">Rating:</span>
-              {{ movieData.vote_average }}
+              {{ Number(movieData.vote_average).toFixed(1) }}
             </li>
             <li>
               <span class="font-semibold text-white/70">Release date:</span>

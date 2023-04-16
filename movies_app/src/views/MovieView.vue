@@ -129,34 +129,39 @@ async function loadMore() {
 
         <div class="w-full max-w-[40rem] px-2 py-4 md:w-1/2">
           <ul>
-            <li class="text-xl font-bold text-white/90">{{ movieData.title }}</li>
+            <li class="text-xl font-bold text-white">{{ movieData.title }}</li>
             <li class="mt-2">{{ movieData.overview }}</li>
             <br />
             <li>
-              <span class="font-semibold text-white/70">Original title: </span>
+              <span class="font-semibold text-white/90">Original title: </span>
               {{ movieData.original_title }}
             </li>
             <li>
-              <span class="font-semibold text-white/70">Original language: </span>
+              <span class="font-semibold text-white/90">Original language: </span>
               {{ movieData.original_language }}
             </li>
             <li>
-              <span class="font-semibold text-white/70"> Production companies: </span>
+              <span class="font-semibold text-white/90"> Genres: </span>
+
+              <span v-for="data in movieData.genres" :key="data"> {{ data.name }} &nbsp; </span>
+            </li>
+            <li>
+              <span class="font-semibold text-white/90"> Production companies: </span>
 
               <span v-for="data in movieData.production_companies" :key="data.id">
                 {{ data.name }} &nbsp;
               </span>
             </li>
             <li>
-              <span class="font-semibold text-white/70">Type:</span>
-              {{ movieData.media_type }}
+              <span class="font-semibold text-white/90">Type:</span>
+              {{ $route.name }}
             </li>
             <li>
-              <span class="font-semibold text-white/70">Rating:</span>
-              {{ movieData.vote_average }}
+              <span class="font-semibold text-white/90">Rating:</span>
+              {{ Number(movieData.vote_average).toFixed(1) }}
             </li>
             <li>
-              <span class="font-semibold text-white/70">Release date:</span>
+              <span class="font-semibold text-white/90">Release date:</span>
               {{ movieData.release_date }}
             </li>
           </ul>
