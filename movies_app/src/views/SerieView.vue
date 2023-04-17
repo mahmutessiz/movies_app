@@ -250,7 +250,7 @@ async function loadMoreRec() {
                 :src="posterUrl + recommededData.poster_path"
                 class="w-full cursor-pointer"
                 :alt="recommededData.title"
-                @click="router.push(`/tv/` + recommededData.id)"
+                @click="router.push(`/tv/` + recommededData.id), (pageNumberRec = 1)"
               />
               <p class="flex h-16 items-center justify-center">{{ recommededData.name }}</p>
             </div>
@@ -280,7 +280,7 @@ async function loadMoreRec() {
                 :src="posterUrl + similarData.poster_path"
                 class="w-full cursor-pointer"
                 :alt="similarData.title"
-                @click="router.push(`/tv/` + similarData.id)"
+                @click="router.push(`/tv/` + similarData.id), (pageNumber = 1)"
               />
               <p class="flex h-16 items-center justify-center">{{ similarData.name }}</p>
             </div>
