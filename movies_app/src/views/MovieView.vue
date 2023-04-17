@@ -125,7 +125,6 @@ async function loadMore() {
     )
     .then((response) => {
       let data = response.data;
-      /*  similarMoviesData.value.results.push(data.results); */
       data.results.forEach((element) => {
         similarMoviesData.value.results.push(element);
       });
