@@ -25,6 +25,7 @@ topSeriesData.fetchTopSeriesData();
           :src="topSeriesData.sourceOfMoviePosterUrl + data.poster_path"
           class="cursor-pointer"
           :alt="data.name"
+          loading="lazy"
           @click="router.push(`/tv/${data.id}`)"
         />
         <p class="flex h-16 flex-col items-center justify-center p-2">{{ data.name }}</p>

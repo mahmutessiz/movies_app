@@ -185,6 +185,7 @@ async function loadMoreRec() {
         <img
           :src="posterUrl + movieData.poster_path"
           :alt="movieData.title"
+          loading="eager"
           class="w-1/3 min-w-[13rem] max-w-[20rem] md:min-w-[15rem]"
         />
 
@@ -246,6 +247,7 @@ async function loadMoreRec() {
                 :src="posterUrl + recommededData.poster_path"
                 class="w-full cursor-pointer"
                 :alt="recommededData.title"
+                loading="lazy"
                 @click="router.push(`/movie/` + recommededData.id), (pageNumberRec = 1)"
               />
               <p class="flex h-16 items-center justify-center">{{ recommededData.title }}</p>
@@ -275,6 +277,7 @@ async function loadMoreRec() {
                 :src="posterUrl + similarData.poster_path"
                 class="w-full cursor-pointer"
                 :alt="similarData.title"
+                loading="lazy"
                 @click="router.push(`/movie/` + similarData.id), (pageNumber = 1)"
               />
               <p class="flex h-16 items-center justify-center">{{ similarData.title }}</p>

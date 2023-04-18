@@ -25,6 +25,7 @@ const router = useRouter();
           class="cursor-pointer"
           :src="topMoviesData.sourceOfMoviePosterUrl + data.poster_path"
           :alt="data.title"
+          loading="lazy"
           @click="router.push(`/movie/${data.id}`)"
         />
         <p class="h-16 p-2">{{ data.title }}</p>

@@ -69,6 +69,7 @@ const router = useRouter();
               class="ml-4 w-48 cursor-pointer sm:w-40 md:ml-20 md:w-60"
               :id="data.id"
               :alt="data.original_title"
+              loading="eager"
               @click="router.push(`/movie/${data.id}`)"
             />
           </div>
