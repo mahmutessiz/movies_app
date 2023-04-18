@@ -141,7 +141,7 @@ async function loadMoreRec() {
   await axios
     .get(
       import.meta.env.VITE_API_URL +
-        '/tv/' +
+        '/movie/' +
         movieId.value +
         '/recommendations' +
         '?api_key=' +
