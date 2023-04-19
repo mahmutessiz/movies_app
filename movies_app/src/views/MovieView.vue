@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
+import MovieTrailers from '../components/MovieTrailers.vue';
 import axios from 'axios';
 // Router import
 import { useRoute, useRouter } from 'vue-router';
@@ -230,6 +231,10 @@ async function loadMoreRec() {
         </div>
       </div>
     </div>
+
+    <!-- Trailer section component -->
+    <MovieTrailers />
+
     <!-- Recommended movies -->
     <div class="mt-12 w-full px-4 py-4 sm:text-center">
       <h2 class="pb-9 text-lg font-bold text-warning">Recomended</h2>
