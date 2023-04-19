@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
@@ -22,6 +22,23 @@ onMounted(async () => {
     error;
   }
 });
+
+watch(
+  () => route.params.id,
+  async (newMovieId) => {
+    try {
+      await axios
+        .get(
+          import.meta.env.VITE_API_URL + '/movie/' + newMovieId + '/videos' + '?api_key=' + apiKey
+        )
+        .then((response) => {
+          movieVideo.value = response.data;
+        });
+    } catch (error) {
+      error;
+    }
+  }
+);
 
 const firstOfficialTrailer = computed(() => {
   if (movieVideo.value && movieVideo.value.results) {
