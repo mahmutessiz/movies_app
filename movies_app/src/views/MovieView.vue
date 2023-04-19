@@ -186,7 +186,6 @@ async function loadMoreRec() {
         <img
           :src="posterUrl + movieData.poster_path"
           :alt="movieData.title"
-          loading="eager"
           class="w-1/3 min-w-[13rem] max-w-[20rem] md:min-w-[15rem]"
         />
 

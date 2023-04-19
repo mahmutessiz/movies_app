@@ -1,4 +1,5 @@
 <script setup>
+import SerieTrailers from '../components/series_components/SerieTrailers.vue';
 import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
 
@@ -183,7 +184,6 @@ async function loadMoreRec() {
         <img
           :src="posterUrl + movieData.poster_path"
           :alt="movieData.title"
-          loading="eager"
           class="max-h-[30rem] w-[20rem] md:min-w-[15rem]"
         />
 
@@ -234,6 +234,9 @@ async function loadMoreRec() {
         </div>
       </div>
     </div>
+    <!-- Trailer component -->
+    <SerieTrailers />
+
     <!-- Recommended movies -->
     <div class="mt-12 w-full px-4 py-4 sm:text-center">
       <h2 class="pb-9 text-lg font-bold text-warning">Recomended</h2>
