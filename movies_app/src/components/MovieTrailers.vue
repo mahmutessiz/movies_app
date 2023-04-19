@@ -50,9 +50,9 @@ const firstOfficialTrailer = computed(() => {
 </script>
 
 <template>
-  <div class="flex w-full max-w-[1080px] justify-center py-12" v-if="firstOfficialTrailer">
+  <div class="flex w-full justify-center py-12" v-if="firstOfficialTrailer">
     <iframe
-      class="aspect-video w-3/4"
+      class="aspect-video w-3/4 max-w-[1080px]"
       :src="'https://www.youtube.com/embed/' + firstOfficialTrailer.key"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
