@@ -41,14 +41,16 @@ watch(
 
 const firstOfficialTrailer = computed(() => {
   if (movieVideo.value && movieVideo.value.results) {
-    return movieVideo.value.results.find((trailer) => trailer.official == true && trailer.type== 'Trailer');
+    return movieVideo.value.results.find(
+      (trailer) => trailer.official == true && trailer.type == 'Trailer'
+    );
   }
   return undefined;
 });
 </script>
 
 <template>
-  <div class="flex w-full justify-center py-12 max-w-[1080px]" v-if="firstOfficialTrailer">
+  <div class="flex w-full max-w-[1080px] justify-center py-12" v-if="firstOfficialTrailer">
     <iframe
       class="aspect-video w-3/4"
       :src="'https://www.youtube.com/embed/' + firstOfficialTrailer.key"
