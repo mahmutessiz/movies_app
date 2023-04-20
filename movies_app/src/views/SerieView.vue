@@ -242,7 +242,7 @@ async function loadMoreRec() {
 
     <!-- Recommended movies -->
     <div class="mt-12 w-full px-4 py-4 sm:text-center">
-      <h2 class="pb-9 text-lg font-bold text-warning">Recomended</h2>
+      <h2 class="pb-9 text-lg font-bold text-warning">Recommended</h2>
       <div class="w-full">
         <ul
           class="flex w-full items-start justify-start gap-4 overflow-x-auto py-4 text-center sm:flex-wrap sm:items-center sm:justify-center sm:overflow-x-hidden"
