@@ -1,5 +1,6 @@
 <script setup>
 import SerieTrailers from '../components/series_components/SerieTrailers.vue';
+import CreditsTvSection from '../components/series_components/CreditsTvSection.vue';
 import { ref, onMounted, watch } from 'vue';
 import axios from 'axios';
 
@@ -234,6 +235,8 @@ async function loadMoreRec() {
         </div>
       </div>
     </div>
+    <!-- Cast -->
+    <CreditsTvSection />
     <!-- Trailer component -->
     <SerieTrailers />
 

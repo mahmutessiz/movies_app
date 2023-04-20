@@ -8,6 +8,27 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(35, 37, 40);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(94, 94, 114);
+  
+  border-radius: 20px;
+}
+
 body{
   background-color: rgb(15, 1, 1);
 }

@@ -27,9 +27,7 @@ watch(
   async (newSerieId) => {
     try {
       await axios
-        .get(
-          import.meta.env.VITE_API_URL + '/tv/' + newSerieId + '/videos' + '?api_key=' + apiKey
-        )
+        .get(import.meta.env.VITE_API_URL + '/tv/' + newSerieId + '/videos' + '?api_key=' + apiKey)
         .then((response) => {
           serieVideo.value = response.data;
         });
@@ -41,7 +39,9 @@ watch(
 
 const firstOfficialTrailer = computed(() => {
   if (serieVideo.value && serieVideo.value.results) {
-    return serieVideo.value.results.find((trailer) => trailer.official == true && trailer.type== 'Trailer');
+    return serieVideo.value.results.find(
+      (trailer) => trailer.official == true && trailer.type == 'Trailer'
+    );
   }
   return undefined;
 });
