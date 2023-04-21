@@ -194,6 +194,14 @@ async function loadMoreRec() {
             <li class="mt-2">{{ movieData.overview }}</li>
             <br />
             <li>
+              <span class="font-semibold text-white/70">Seasons: </span>
+              {{ movieData.number_of_seasons }}
+            </li>
+            <li>
+              <span class="font-semibold text-white/70">Episodes: </span>
+              {{ movieData.number_of_episodes }}
+            </li>
+            <li>
               <span class="font-semibold text-white/70">Original name: </span>
               {{ movieData.original_name }}
             </li>
