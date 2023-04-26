@@ -47,9 +47,9 @@ watch(
 </script>
 
 <template>
-  <div class="w-full bg-gradient-to-b from-slate-700/10 to-black">
+  <div class="flex w-full justify-center bg-gradient-to-b from-slate-700/10 to-black">
     <ul
-      class="m-auto flex w-full items-center justify-start gap-4 overflow-x-auto px-4 py-9 md:w-3/4"
+      class="m-auto flex max-w-full items-center justify-start gap-4 overflow-x-auto px-4 py-9 md:max-w-[75%]"
     >
       <li
         v-for="cast in creditsData.cast"
