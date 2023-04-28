@@ -75,8 +75,10 @@ const router = useRouter();
           <div class="w-full px-4 py-4 text-left sm:w-1/2 sm:py-0">
             <h2 class="pb-2 text-left text-green-500/70">Editor's picks #{{ index + 1 }}</h2>
 
-            <p class="text-lg font-bold text-white">{{ data.name }}</p>
-            <p class="line-clamp-4 md:line-clamp-none">
+            <p class="text-lg font-bold text-white md:pb-4 md:text-3xl lg:text-5xl">
+              {{ data.name }}
+            </p>
+            <p class="line-clamp-4 md:line-clamp-5">
               {{ data.overview }}
             </p>
             <br class="hidden sm:block" />
