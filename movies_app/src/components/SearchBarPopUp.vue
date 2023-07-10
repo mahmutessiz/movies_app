@@ -29,7 +29,6 @@ function sendToSearchMobile(params) {
 }
 
 const apiKey = import.meta.env.VITE_API_KEY;
-const sourceOfPosterUrl = 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/';
 
 const movieName = ref('');
 
@@ -96,12 +95,6 @@ watch(movieName, async (newValue, oldValue) => {
           :key="data.id"
           tabindex="0"
         >
-          <img
-            :src="sourceOfPosterUrl + data.poster_path"
-            class="col-span-2 w-full"
-            :alt="data.title"
-            @click="sendToSearchMobile(data)"
-          />
           <p
             class="col-span-8 line-clamp-3 flex items-center px-4 text-sm text-white"
             v-if="data.title != null || undefined || ''"
