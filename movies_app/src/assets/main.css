@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -25,15 +25,15 @@
 
 *::-webkit-scrollbar-thumb {
   background-color: rgb(94, 94, 114);
-  
+
   border-radius: 20px;
 }
 
-body{
+body {
   background-color: rgb(15, 1, 1);
 }
-#app{
-  @apply w-full max-w-[2400px] bg-gray-800 text-slate-300/80;
+#app {
+  @apply w-full max-w-[2400px] bg-gray-900 text-slate-300/80;
   margin: 0 auto;
 }
 .swiper-pagination-bullet-active {

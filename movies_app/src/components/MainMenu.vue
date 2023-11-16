@@ -36,7 +36,7 @@ function openSearchBar() {
   }
 }
 /**
- * !Mini results
+ * Mini results
  */
 
 /**
@@ -86,7 +86,7 @@ function goToData(data) {
 
 <template>
   <header
-    class="sticky -top-1 z-50 flex w-full items-center justify-between bg-slate-800/70 px-4 py-4 text-white backdrop-blur-md sm:justify-evenly"
+    class="sticky -top-1 z-50 flex w-full items-center justify-between bg-slate-900/70 px-4 py-4 text-white backdrop-blur-md sm:justify-evenly"
   >
     <RouterLink to="/"
       ><img src="../assets/logo2.png" class="w-20 opacity-80 sm:w-36" alt=""
@@ -97,7 +97,7 @@ function goToData(data) {
         <input
           type="text"
           name="searchBar"
-          class="h-8 w-60 rounded-l-md bg-slate-900 px-4"
+          class="h-8 w-60 rounded-l-md bg-slate-800 px-4"
           placeholder=" Search"
           id="search-bar"
           v-model="movieName"
@@ -105,7 +105,7 @@ function goToData(data) {
         />
       </li>
       <li
-        class="grid cursor-pointer place-items-center rounded-r-md bg-black p-2"
+        class="grid cursor-pointer place-items-center rounded-r-md bg-slate-700 p-2"
         @click="sendToSearch"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
