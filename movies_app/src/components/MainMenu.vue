@@ -13,32 +13,22 @@ function drawerStatusToggle() {
 }
 //push the search path
 const router = useRouter();
+
 function sendToSearch() {
   const inputValue = document.querySelector('#search-bar');
-  if (inputValue.value != '') {
-    router.push('/search/' + inputValue.value).then(() => {
-      window.location.reload();
-    });
+  if (inputValue.value !== '') {
+    window.location.href = '/search/' + inputValue.value;
   }
 }
 let toggle = true;
 function openSearchBar() {
   const searcDiv = document.querySelector('#search-div');
+  const isToggleTrue = !toggle;
 
-  if (toggle == true) {
-    searcDiv.classList.remove('hidden');
-    searcDiv.classList.add('flex');
-    toggle = false;
-  } else {
-    searcDiv.classList.add('hidden');
-    searcDiv.classList.remove('flex');
-    toggle = true;
-  }
+  searcDiv.classList.toggle('hidden', isToggleTrue);
+  searcDiv.classList.toggle('flex', !isToggleTrue);
+  toggle = isToggleTrue;
 }
-/**
- * Mini results
- */
-
 /**
  * Api
  */
@@ -67,20 +57,25 @@ watch(movieName, async (newValue) => {
     error;
   }
 });
+/**
+ * Navigates to the appropriate route based on the given data and reloads the page.
+ *
+ * @param {Object} data - The data object containing the media type and ID.
+ * @return {void} This function does not return anything.
+ */
 function goToData(data) {
-  if (data.media_type == 'movie') {
-    router.push('/movie/' + data.id).then(() => {
-      window.location.reload();
-    });
-  } else if (data.media_type == 'tv') {
-    router.push('/tv/' + data.id).then(() => {
-      window.location.reload();
-    });
+  let route = '';
+  if (data.media_type === 'movie') {
+    route = '/movie/' + data.id;
+  } else if (data.media_type === 'tv') {
+    route = '/tv/' + data.id;
   } else {
-    router.push('/other').then(() => {
-      window.location.reload();
-    });
+    route = '/other';
   }
+
+  router.push(route).then(() => {
+    window.location.reload();
+  });
 }
 </script>
 
