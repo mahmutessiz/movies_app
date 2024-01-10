@@ -1,0 +1,10 @@
+<template>
+  <label class="swap text-6xl">
+    <div class="swap-on">🥵</div>
+    <div class="swap-off">🥶</div>
+  </label>
+  <label class="swap swap-active text-6xl">
+    <div class="swap-on">🥳</div>
+    <div class="swap-off">😭</div>
+  </label>
+</template>
