@@ -2,6 +2,7 @@
 import { RouterLink, useRouter } from 'vue-router';
 import SearcBarPopUp from '../components/SearchBarPopUp.vue';
 import FavButton from './buttons/FavButton.vue';
+import FavoritesList from './FavoritesList.vue';
 import axios from 'axios';
 import { ref, watch, computed } from 'vue';
 /**
@@ -78,9 +79,19 @@ function goToData(data) {
     window.location.reload();
   });
 }
+
+const switchFavorites = () => {
+  const favoritesList = document.querySelector('#favorites-list');
+  if (favoritesList.classList.contains('hidden')) {
+    favoritesList.classList.remove('hidden');
+  } else {
+    favoritesList.classList.add('block');
+  }
+};
 </script>
 
 <template>
+  <FavoritesList class="hidden" id="favorites-list" />
   <header
     class="sticky -top-1 z-50 flex w-full items-center justify-between bg-slate-900/70 px-4 py-4 text-white backdrop-blur-md sm:justify-evenly"
   >
@@ -127,7 +138,7 @@ function goToData(data) {
 
       <!-- favorites button -->
       <li>
-        <FavButton />
+        <FavButton @click="switchFavorites" />
       </li>
     </ul>
     <div class="flex items-center gap-4 sm:hidden">
