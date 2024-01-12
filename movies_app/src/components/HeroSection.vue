@@ -49,12 +49,12 @@ const router = useRouter();
       v-for="(data, index) in myMovieListData.myMovieList.items"
       :virtualIndex="data.id"
       :key="data.id"
-      class="relative flex flex-wrap items-center justify-center text-center sm:h-[50rem]"
+      class="relative flex flex-wrap items-center justify-center text-center sm:h-[35rem] lg:h-[40rem] xl:h-[50rem]"
     >
       <div class="absolute inset-0 -z-10 flex h-full w-full justify-center">
         <img
           :src="myMovieListData.sourceOfMoviesBackdropImg + data.backdrop_path"
-          class="h-[50rem] w-full"
+          class="w-full sm:h-[35rem] lg:h-[40rem] xl:h-[50rem]"
           :id="data.id"
           :alt="data.original_title"
         />
@@ -63,7 +63,7 @@ const router = useRouter();
         class="bg-gradient-from-t w-full bg-gradient-to-b from-gray-900 to-gray-700/80 backdrop-blur-[5px]"
       >
         <div
-          class="relative flex h-[50rem] flex-wrap items-end justify-start px-2 py-9 text-center sm:pb-24 md:px-12"
+          class="relative flex flex-wrap items-end justify-start px-2 py-9 text-center sm:h-[35rem] sm:pb-24 md:px-12 lg:h-[40rem] xl:h-[50rem]"
         >
           <div class="relative">
             <!-- add favorite to localstorage -->
