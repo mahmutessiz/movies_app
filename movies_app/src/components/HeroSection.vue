@@ -24,6 +24,11 @@ const modules = [Pagination, Navigation, Autoplay];
 
 // Router codes
 const router = useRouter();
+
+const changeButtonStyle = (id) => {
+  const favButton = document.getElementById(id);
+  favButton.classList.toggle('text-rose-500');
+};
 </script>
 
 <template>
@@ -69,12 +74,16 @@ const router = useRouter();
             <!-- add favorite to localstorage -->
             <button
               class="btn-sm absolute bottom-2 right-2 cursor-pointer rounded-md bg-slate-900/50 text-rose-500 backdrop-blur-lg"
+              :id="`btn-favorite-${data.id}`"
               @click="
-                saveToLocalStorage(data.title, {
-                  id: data.id,
-                  title: data.title,
-                  media_type: data.media_type
-                })
+                () => {
+                  saveToLocalStorage(data.title, {
+                    id: data.id,
+                    title: data.title,
+                    media_type: data.media_type
+                  }),
+                    changeButtonStyle(`btn-favorite-${data.id}`);
+                }
               "
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

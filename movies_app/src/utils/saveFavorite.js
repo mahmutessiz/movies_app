@@ -1,3 +1,8 @@
+import { ref } from 'vue';
+
+// Create a ref for reactive data
+const x_data = ref({});
+
 // Save to local storage
 function saveToLocalStorage(key, value) {
   if (localStorage.getItem('x_' + key)) {
@@ -5,15 +10,17 @@ function saveToLocalStorage(key, value) {
   } else {
     localStorage.setItem('x_' + key, JSON.stringify(value));
   }
+  loadFromLocalStorage();
 }
 
-// Load from local storage
-function loadFromLocalStorage(key) {
-  const value = localStorage.getItem(key);
-  if (value) {
-    return JSON.parse(value);
+// Function to load all 'x_' data from local storage
+function loadFromLocalStorage() {
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    if (key.startsWith('x_')) {
+      x_data.value[key] = JSON.parse(localStorage.getItem(key));
+    }
   }
-  return null;
 }
 
-export { saveToLocalStorage, loadFromLocalStorage };
+export { saveToLocalStorage, x_data, loadFromLocalStorage };
