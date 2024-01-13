@@ -106,7 +106,7 @@ watch(
 );
 
 /**
- * !when load more button clicked push results of new page to similarMoviesData
+ * when load more button clicked push results of new page to similarMoviesData
  */
 function count() {
   pageNumber++;
