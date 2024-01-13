@@ -46,7 +46,8 @@ const changeButtonStyle = (id) => {
                 saveToLocalStorage(data.title, {
                   id: data.id,
                   title: data.title,
-                  media_type: data.media_type
+                  media_type: data.media_type,
+                  poster_path: data.poster_path
                 }),
                   changeButtonStyle(`btn-favorite-${data.id}`);
               }
