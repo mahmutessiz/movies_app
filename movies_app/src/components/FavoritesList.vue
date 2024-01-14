@@ -32,7 +32,7 @@
       </button>
     </div>
 
-    <ul class="flex flex-wrap justify-center gap-2">
+    <ul class="flex flex-wrap justify-center gap-2 py-4">
       <li
         v-for="(movie, key) in x_data"
         class="flex w-full items-center justify-start gap-2 bg-rose-900 md:w-[40%]"
@@ -46,8 +46,6 @@
           </button>
         </div>
       </li>
-      <!-- <p>ID: {{ movie.id }}</p>
-      <p>Media Type: {{ movie.media_type }}</p> -->
     </ul>
   </div>
 </template>
