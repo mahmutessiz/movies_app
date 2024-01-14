@@ -54,12 +54,12 @@ const changeButtonStyle = (id) => {
       v-for="(data, index) in seriesListData.mySeriesListData.items"
       :virtualIndex="data.id"
       :key="data.id"
-      class="relatived flex flex-wrap items-center justify-center text-center sm:h-[35rem] lg:h-[40rem] xl:h-[50rem]"
+      class="relatived flex flex-wrap items-center justify-center text-center sm:h-[35rem] lg:h-[40rem] xl:h-[45rem]"
     >
       <div class="absolute inset-0 -z-10 flex h-full w-full justify-center">
         <img
           :src="seriesListData.sourceOfMoviesBackdropImg + data.backdrop_path"
-          class="w-full sm:h-[35rem] lg:h-[40rem] xl:h-[50rem]"
+          class="w-full sm:h-[35rem] lg:h-[40rem] xl:h-[45rem]"
           :id="data.id"
           :alt="data.original_title"
         />
@@ -68,7 +68,7 @@ const changeButtonStyle = (id) => {
         class="bg-gradient-from-t w-full bg-gradient-to-b from-gray-900 to-gray-700/80 backdrop-blur-[5px]"
       >
         <div
-          class="relative flex flex-wrap items-end justify-start px-2 py-9 text-center sm:h-[35rem] sm:pb-24 md:px-12 lg:h-[40rem] xl:h-[50rem]"
+          class="relative flex flex-wrap items-end justify-start px-2 py-9 text-center sm:h-[35rem] sm:pb-24 md:px-12 lg:h-[40rem] xl:h-[45rem]"
         >
           <div class="relative">
             <!-- add favorite to localstorage -->
