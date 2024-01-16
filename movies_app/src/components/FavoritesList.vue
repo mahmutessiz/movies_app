@@ -35,7 +35,7 @@
     <ul class="flex flex-wrap justify-center gap-2 py-4">
       <li
         v-for="(movie, key) in x_data"
-        class="flex w-full items-center justify-start gap-2 bg-rose-900 md:w-[40%]"
+        class="flex w-full items-center justify-start gap-2 overflow-hidden rounded-sm bg-rose-900 md:w-[40%]"
         :key="key"
       >
         <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="w-20" alt="" />
