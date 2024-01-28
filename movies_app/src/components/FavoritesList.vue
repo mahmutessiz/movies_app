@@ -1,9 +1,9 @@
 <template>
   <div
-    class="fixed z-[999] grid h-[100vh] w-full place-items-center overflow-scroll overscroll-y-none bg-slate-900/80 backdrop-blur-md"
+    class="fixed inset-0 z-[999] grid w-full place-items-center overflow-scroll overscroll-none bg-slate-900/80 backdrop-blur-md"
     id="favorites-list"
   >
-    <div class="sticky top-0 flex w-full justify-end">
+    <div class="sticky top-0 flex h-16 w-full justify-end">
       <button @click="switchFavorites" class="btn m-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
@@ -32,14 +32,14 @@
       </button>
     </div>
 
-    <ul class="flex w-[80%] flex-wrap justify-start gap-2 py-4">
+    <ul class="flex min-h-[95vh] w-full flex-wrap gap-4 px-2 py-8 sm:px-4">
       <li
         v-for="(movie, key) in x_data"
-        class="flex w-full items-center justify-start gap-2 overflow-hidden rounded-sm bg-rose-900 md:w-[40%]"
+        class="flex max-h-40 w-full items-center justify-start gap-2 overflow-hidden rounded-md bg-rose-900 md:w-[45%]"
         :key="key"
       >
-        <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="w-20" alt="" />
-        <div class="flex w-full flex-col gap-2 pr-4">
+        <img :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" class="w-28" alt="" />
+        <div class="flex h-full w-full flex-col justify-between gap-2 py-2 pr-2">
           {{ movie.title }}
           <button @click="removeItem(movie.title)" class="btn-warning btn-sm btn w-fit self-end">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
