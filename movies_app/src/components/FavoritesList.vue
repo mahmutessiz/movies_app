@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="fixed inset-0 z-[999] grid w-full place-items-center overflow-scroll overscroll-none bg-slate-900/80 backdrop-blur-md"
-    id="favorites-list"
-  >
+  <div class="fixed inset-0 z-[999] bg-slate-900/80 backdrop-blur-md" id="favorites-list">
     <div class="sticky top-0 flex h-16 w-full justify-end">
       <button @click="switchFavorites" class="btn m-4">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -32,7 +29,9 @@
       </button>
     </div>
 
-    <ul class="flex min-h-[95vh] w-full flex-wrap gap-4 px-2 py-8 sm:px-4">
+    <ul
+      class="flex h-[95vh] w-full flex-wrap gap-4 overflow-scroll overscroll-none px-2 pb-8 sm:px-4"
+    >
       <li
         v-for="(movie, key) in x_data"
         class="flex max-h-40 w-full items-center justify-start gap-2 overflow-hidden rounded-md bg-rose-900 md:w-[45%]"
