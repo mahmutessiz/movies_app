@@ -11,7 +11,7 @@
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: blue orange;
+  scrollbar-color: rgb(94, 94, 114) rgb(35, 37, 40);
 }
 
 /* Works on Chrome, Edge, and Safari */
