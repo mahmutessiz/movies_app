@@ -1,14 +1,30 @@
 import { ref } from 'vue';
-
+import { useToast } from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 // Create a ref for reactive data
 const x_data = ref({});
+const $toast = useToast({
+  position: 'top-left',
+  duration: 3000,
+  dismissible: true
+});
+
+function toastSuccess() {
+  $toast.success('Saved to favorites');
+}
+
+function toastRemoved() {
+  $toast.warning('Removed from favorites');
+}
 
 // Save to local storage
 function saveToLocalStorage(key, value) {
   if (localStorage.getItem('x_' + key)) {
     localStorage.removeItem('x_' + key);
+    toastRemoved();
   } else {
     localStorage.setItem('x_' + key, JSON.stringify(value));
+    toastSuccess();
   }
   loadFromLocalStorage();
 }
