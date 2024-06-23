@@ -8,7 +8,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://movies-app-blush-ten.vercel.app/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#333333"
