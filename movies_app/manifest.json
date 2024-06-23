@@ -3,7 +3,7 @@
   "name": "Movies App - Watch movies and series",
   "icons": [
     {
-      "src": "/assets/logo.png",
+      "src": "https://raw.githubusercontent.com/mahmutessiz/movies_app/master/movies_app/assets/logo.png",
       "sizes": "192x192",
       "type": "image/png"
     }
